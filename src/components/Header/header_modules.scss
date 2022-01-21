@@ -1,0 +1,56 @@
+.header {
+  padding-top: 35px;
+  padding-bottom: 30px;
+  position: relative;
+}
+
+.header:after {
+  position: absolute;
+  content: "";
+  background-color: #316bf3;
+  left: 0;
+  right: 0;
+  top: 115px;
+  height: 60px;
+  margin-left: -55px;
+  margin-right: -55px;
+}
+
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-logo,
+a.site-logo {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  font-size: 38px;
+  text-decoration: none;
+  color: #316bf3;
+  transition: 0.2s ease-in;
+}
+
+@media (max-width: 576px) {
+  .site-logo {
+    display: block;
+    text-align: center;
+  }
+}
+
+.site-logo span {
+  color: #2b2b2b;
+}
+
+a.site-logo:hover {
+  color: #316bf3;
+  text-decoration: none;
+  color: #ff3805;
+}
+
+a.site-logo:hover span {
+  color: #2b2b2b;
+  text-decoration: none;
+  color: #316bf3;
+}

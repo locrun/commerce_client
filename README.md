@@ -4,7 +4,7 @@
 
 # Технологии
 
-- React js Hooks, Api
+- React js
 - Redux
 - Api
 

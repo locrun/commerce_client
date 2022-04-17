@@ -1,5 +1,5 @@
 # e-commerce
-## Технологии
+# Технологии
 
 - React js Hooks, Api
 - Redux

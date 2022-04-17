@@ -1,5 +1,5 @@
 # e-commerce
-- Stack: React js, Redux, Hooks, Api
+- Technology: React js, Redux, Hooks, Api
 - Фильтрация по категориям
 - Поиск товара по названию
 - Возможность просмотра выбранного товара на отдельной странице

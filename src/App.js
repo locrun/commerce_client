@@ -3,13 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { productsLoad } from "./redux/actions";
 import Spin from "./Spin";
 import { ItemCards, Filter, Header, Order, Cart, Product } from "./components";
-import {
-  BrowserRouter,
-  Route,
-  Routes,
-  Navigate,
-  Outlet,
-} from "react-router-dom";
+import { HashRouter, Route, Routes, Navigate, Outlet } from "react-router-dom";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -19,7 +13,7 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<ItemCards products={products} />} />
@@ -29,7 +23,7 @@ const App = () => {
         </Route>
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 

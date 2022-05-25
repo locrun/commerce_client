@@ -8,4 +8,4 @@
 - Redux
 - Api
 
-### [online demo](https://locrun.github.io/)
+### [online demo](https://locrun.github.io/e-commerce/)

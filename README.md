@@ -8,4 +8,4 @@
 - Redux
 - Api
 
-### [online demo](https://quizzical-kalam-d52dab.netlify.app/)
+### [online demo](https://locrun.github.io/)

@@ -1,0 +1,41 @@
+.list {
+  max-width: 155px;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 0 15px;
+  margin-right: 20px;
+  margin-bottom: 0;
+  margin-top: 0;
+  list-style: none;
+}
+
+.listItem {
+  display: inline-block;
+  color: #000;
+  font-weight: 700;
+  line-height: 25px;
+  font-size: 16px;
+  padding: 8px 14px;
+  border-radius: 5px;
+  transition: 0.2s ease-in;
+  cursor: pointer;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+.listItem:hover {
+  background-color: rgba(92, 142, 249, 0.1);
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.active {
+  background-color: #316bf3;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+}
+.active:hover {
+  background-color: #316bf3;
+}

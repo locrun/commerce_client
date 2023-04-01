@@ -1,0 +1,77 @@
+.header {
+  padding-top: 35px;
+  padding-bottom: 30px;
+  position: relative;
+}
+
+.header:after {
+  position: absolute;
+  content: "";
+  background-color: #316bf3;
+  left: 0;
+  right: 0;
+  top: 115px;
+  height: 60px;
+  margin-left: -55px;
+  margin-right: -55px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo,
+a.logo {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  font-size: 38px;
+  text-decoration: none;
+  color: #316bf3;
+  transition: 0.2s ease-in;
+}
+
+@media (max-width: 576px) {
+  .logo {
+    display: block;
+    text-align: center;
+  }
+}
+
+.logo span {
+  color: #2b2b2b;
+}
+
+a.logo:hover {
+  color: #316bf3;
+  text-decoration: none;
+  color: #ff3805;
+}
+
+a.logo:hover span {
+  color: #2b2b2b;
+  text-decoration: none;
+  color: #316bf3;
+}
+
+.button {
+  padding: 10px 38px;
+  margin-right: 25px;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 123, 255);
+  background-color: rgb(85 129 177);
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  font-family: "Segoe UI";
+  letter-spacing: 0.5px;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  &:hover {
+    background-color: rgba(0, 123, 255, 0.8);
+  }
+}

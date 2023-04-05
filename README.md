@@ -8,4 +8,3 @@
 - Добавить полноценный бэкенд (Node js, Express, PostgreSQL, Sequelize)
 - Добавить возможность добавлять, редактировать и удалять товары на странице.
 
-### [online demo](https://locrun.github.io/e-commerce/)

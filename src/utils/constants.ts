@@ -4,6 +4,6 @@ export enum path {
   REGISTRATION_ROUTE = "/registration",
   CATALOG_ROUTE = "/",
   BASKET_ROUTE = "/basket",
-  PRODUCT_DETAIL_ROUTE = "/product",
+  PRODUCT_DETAIL_ROUTE = "/detail",
   NOT_FOUND = "*",
 }

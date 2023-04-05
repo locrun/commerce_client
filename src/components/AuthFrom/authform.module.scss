@@ -4,6 +4,15 @@
   align-items: center;
   height: 100vh;
 }
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+.flexRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .title {
   margin: 0;
   margin-bottom: 40px;
@@ -15,9 +24,9 @@
   color: cornflowerblue;
 }
 .formWrapper {
-  min-width: 600px;
+  min-width: 550px;
   max-width: 400px;
-  padding: 40px 40px 50px 40px;
+  padding: 40px;
 
   background-color: #fff;
   border-radius: 16px;
@@ -59,7 +68,7 @@
   outline: none;
   color: rgb(255, 255, 255);
   background-color: rgb(0, 123, 255);
-  padding: 16px 0;
+  padding: 10px 60px;
   border-radius: 5px;
   font-size: 18px;
   cursor: pointer;

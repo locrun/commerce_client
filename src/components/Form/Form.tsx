@@ -4,7 +4,7 @@ import s from "./form.module.scss";
 export const Form: FC = () => {
   return (
     <div className={s.container}>
-      <h2 className={s.title}>Загрузить девайс</h2>
+      <h2 className={s.title}>Добавить товар</h2>
       <form className={s.form}>
         <input
           type="text"

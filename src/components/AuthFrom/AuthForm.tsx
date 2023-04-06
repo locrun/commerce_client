@@ -18,11 +18,11 @@ interface User {
 }
 
 export const AuthForm: FC = () => {
+
   const dispath = useAppDispatch()
+  const navigate = useNavigate()
   const { pathname } = useLocation()
   const isLogin = pathname === path.AUTH_ROUTE;
-  const navigate = useNavigate()
-
 
   const [loginUser, {
     data: loginData,
@@ -56,23 +56,16 @@ export const AuthForm: FC = () => {
       dispath(setUser({
         token: loginData.token
       }))
-      setTimeout(() => {
-        navigate("/")
-      }, 1000)
     }
   }, [dispath, isLoginSuccess, loginData, navigate])
 
 
   useEffect(() => {
     if (isRegisterSuccess) {
-      toast.success("User Login Successfully")
+      toast.success("User Register Successfully")
       dispath(setUser({
         token: registerData.token
       }))
-      setTimeout(() => {
-        navigate("/")
-      }, 1000)
-
     }
   }, [dispath, isRegisterSuccess, registerData, navigate])
 

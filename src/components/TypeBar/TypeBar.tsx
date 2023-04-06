@@ -3,36 +3,27 @@ import classNames from "classnames";
 
 import s from "./typebar.module.scss"
 
-export const TypeBar: FC = () => {
-  const [active, setActive] = useState("jewelery");
+interface ITypes {
+  id: number,
+  name: string,
+  createdAt: string,
+  updatedAt: string
+}
 
-  const buttons = [
-    { id: 1, name: "all", title: "Все товары" },
-    {
-      id: 2,
-      name: "jewelery",
-      title: "Украшения",
-    },
-    {
-      id: 3,
-      name: "men's clothing",
-      title: "Мужская одежда",
-    },
-    {
-      id: 4,
-      name: "women's clothing",
-      title: "Женская одежда",
-    },
-    { id: 5, name: "electronics", title: "Электроника" },
-  ];
+type PropsTypeBar = {
+  types: ITypes[] | undefined
+}
+
+export const TypeBar: FC<PropsTypeBar> = (props) => {
+  const [active, setActive] = useState("WINDOWS");
 
   return (
     <ul className={s.list}>
-      {buttons.map(({ id, name, title }) =>
-        <li className={classNames(s.listItem, {
+      {props?.types?.map(({ id, name }) =>
+        <li key={id} className={classNames(s.listItem, {
           [s.active]: name === active
         })}
-        >{title}
+        >{name}
         </li>
       )}
     </ul>

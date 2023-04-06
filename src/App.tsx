@@ -18,6 +18,7 @@ export const App: FC = () => {
 
   useEffect(() => {
     fetchCheckUser(true)
+
   }, [fetchCheckUser])
 
   return (

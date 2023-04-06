@@ -1,6 +1,14 @@
-
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { RootState } from './store'
+
+interface ITypes {
+  id: number,
+  name: string,
+  createdAt: string,
+  updatedAt: string
+}
+
+
 
 export const authApi = createApi({
   reducerPath: 'authApi',
@@ -33,10 +41,26 @@ export const authApi = createApi({
     }),
     checkUser: builder.query({
       query: () => "/user/check",
-    })
+    }),
+    createType: builder.mutation({
+      query: (body: { name: string, role?: "ADMIN" }) => ({
+        url: '/type',
+        method: 'POST',
+        body
+      }),
+    }),
+    getType: builder.query<ITypes[], null>({
+      query: () => "/type",
+    }),
   }),
 })
 
-export const { useLoginUserMutation, useRegisterUserMutation, useLazyCheckUserQuery } = authApi
+export const {
+  useLoginUserMutation,
+  useRegisterUserMutation,
+  useLazyCheckUserQuery,
+  useGetTypeQuery,
+  useCreateTypeMutation }
+  = authApi
 
 

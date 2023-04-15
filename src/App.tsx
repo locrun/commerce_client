@@ -1,14 +1,16 @@
 import { FC, useEffect } from "react";
 import { BrowserRouter, Route, Routes, Outlet } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import { useAppSelector } from "./hooks/redux-hooks";
 import { Header } from "./components";
-import { Catalog } from "./pages/Catalog";
+import { HomePage } from "./pages/HomePage";
 import { privateRoutes, publicRoutes, authRoutes } from "./routes";
+import { useLazyCheckUserQuery } from "./redux/api/authApi";
+import { selectAuth } from "./redux/slices/authSlice";
+
 import { path } from "./utils/constants";
 import s from './styles/index.module.scss'
-import { ToastContainer } from "react-toastify";
-import { useLazyCheckUserQuery } from "./redux/authApi";
-import { selectAuth } from "./redux/slices/authSlice";
+
 
 export const App: FC = () => {
 
@@ -18,7 +20,6 @@ export const App: FC = () => {
 
   useEffect(() => {
     fetchCheckUser(true)
-
   }, [fetchCheckUser])
 
   return (
@@ -26,7 +27,7 @@ export const App: FC = () => {
       <ToastContainer />
       <Routes>
         <Route path={path.CATALOG_ROUTE} element={<Layout />}>
-          <Route index element={<Catalog />} />
+          <Route index element={<HomePage />} />
           <Route>
             {isAuth &&
               privateRoutes.map(({ path, Component }) => {
@@ -38,7 +39,7 @@ export const App: FC = () => {
               return <Route key={path} path={path} element={Component} />;
             })}
           </Route>
-          <Route path={path.NOT_FOUND} element={<Catalog />} />
+          <Route path={path.NOT_FOUND} element={<HomePage />} />
         </Route>
         {
           !isAuth &&

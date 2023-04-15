@@ -57,12 +57,11 @@ a.logo:hover span {
 
 .button {
   padding: 10px 38px;
-  margin-right: 25px;
+  //margin-right: 25px;
   border: none;
   outline: none;
-  color: rgb(255, 255, 255);
-  background-color: rgb(0, 123, 255);
-  background-color: rgb(85 129 177);
+  color: #ffffff;
+  background-color: rgba(0, 123, 255, 0.8);
   border-radius: 5px;
   font-size: 18px;
   cursor: pointer;
@@ -72,7 +71,26 @@ a.logo:hover span {
   font-size: 14px;
   text-transform: uppercase;
   &:hover {
-    background-color: rgba(0, 123, 255, 0.8);
+    background-color: rgb(85 129 177);
+  }
+}
+.buttonRed {
+  padding: 10px 38px;
+  margin-right: 25px;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  background-color: #cc4e5c;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  font-family: "Segoe UI";
+  letter-spacing: 0.5px;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  &:hover {
+    background-color: #b16d75;
   }
 }
 

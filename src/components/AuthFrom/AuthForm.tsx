@@ -5,11 +5,11 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 
 import { useAppDispatch } from '../../hooks/redux-hooks';
 import { setUser } from '../../redux/slices/authSlice';
-import { useLoginUserMutation, useRegisterUserMutation } from '../../redux/authApi'
+import { useLoginUserMutation, useRegisterUserMutation } from '../../redux/api/authApi'
 
 import { path } from "../../utils/constants"
-import s from "./authform.module.scss"
 import 'react-toastify/dist/ReactToastify.css';
+import s from "./AuthForm.module.scss"
 
 
 interface User {

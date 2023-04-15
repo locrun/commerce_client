@@ -1,7 +1,9 @@
 import { FC, useState } from "react";
-import classNames from "classnames";
+import { useGetAllTypesQuery } from "../../redux/api";
 
-import s from "./typebar.module.scss"
+import cn from "classnames";
+import s from "./TypeBar.module.scss"
+
 
 interface ITypes {
   id: number,
@@ -10,17 +12,17 @@ interface ITypes {
   updatedAt: string
 }
 
-type PropsTypeBar = {
-  types: ITypes[] | undefined
-}
+export const TypeBar: FC = (props) => {
 
-export const TypeBar: FC<PropsTypeBar> = (props) => {
-  const [active, setActive] = useState("WINDOWS");
+  const { data: types } = useGetAllTypesQuery()
+
+  const [active, setActive] = useState("Стиральные машины");
+
 
   return (
     <ul className={s.list}>
-      {props?.types?.map(({ id, name }) =>
-        <li key={id} className={classNames(s.listItem, {
+      {types?.map(({ id, name }: ITypes) =>
+        <li key={id} className={cn(s.listItem, {
           [s.active]: name === active
         })}
         >{name}

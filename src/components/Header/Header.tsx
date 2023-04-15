@@ -4,20 +4,21 @@ import { toast } from "react-toastify";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { logout, selectAuth } from "../../redux/slices/authSlice";
 import { path } from "../../utils/constants";
-import { AdminPanelHeader } from "./AdminPanelHeader/AdminPanelHeader";
-import s from "./header.module.scss";
+import { AdminPanel } from "./AdminPanel/AdminPanel";
+import s from "./Header.module.scss";
 
 export const Header: FC = () => {
   const navigate = useNavigate();
-  const dispath = useAppDispatch()
+  const dispatch = useAppDispatch()
 
   const { pathname } = useLocation()
   const isAuth = useAppSelector(selectAuth)
 
+  const isDetail = path.PRODUCT_DETAIL_ROUTE === pathname.slice(0, 7)
   const isAdmin = path.ADMIN_ROUTE === pathname
 
   const handleLogout = () => {
-    dispath(logout())
+    dispatch(logout())
     toast.success("User Logout Successfully")
   }
 
@@ -26,7 +27,7 @@ export const Header: FC = () => {
     <header className={s.header}>
       <div className={s.flex}>
         {
-          isAdmin && isAuth ? <AdminPanelHeader /> :
+          isAdmin && isAuth ? <AdminPanel /> :
             <>
               <Link to="/" className={s.logo}>
                 <span>техно</span>Store
@@ -34,14 +35,22 @@ export const Header: FC = () => {
               <div className={s.buttons}>
                 {
                   isAuth ?
-                    <>
-                      <button className={s.button} onClick={() => navigate("/admin")}>
-                        Админ панель
-                      </button>
+                    <div className={s.flex}>
+                      <div className={s.flex} style={{ marginRight: "50px" }}>
+                        <button style={{ marginRight: "20px" }} className={s.button} onClick={() => navigate("/admin")}>
+                          Админ панель
+                        </button>
+                        {isDetail &&
+                          <button style={{ backgroundColor: "#cc4e5c" }}
+                            className={s.button} onClick={() => navigate("/")}>
+                            На главную
+                          </button>
+                        }
+                      </div>
                       <button className={s.button} onClick={handleLogout}>
                         Выйти
                       </button>
-                    </>
+                    </div>
                     :
                     <button className={s.button} onClick={() => navigate("/auth")}>
                       Aвторизуйтесь

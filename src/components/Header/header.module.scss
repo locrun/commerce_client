@@ -70,8 +70,10 @@ a.logo:hover span {
   font-weight: 700;
   font-size: 14px;
   text-transform: uppercase;
+  transition: 0.3s ease-in;
   &:hover {
-    background-color: rgb(85 129 177);
+    transition: 0.3s ease-in;
+    background-color: #0069d9;
   }
 }
 .buttonRed {
@@ -89,8 +91,10 @@ a.logo:hover span {
   font-weight: 700;
   font-size: 14px;
   text-transform: uppercase;
+  transition: 0.3s ease-in;
   &:hover {
-    background-color: #b16d75;
+    transition: 0.3s ease-in;
+    background-color: #b93947;
   }
 }
 

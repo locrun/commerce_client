@@ -72,10 +72,10 @@ export const AuthForm: FC = () => {
 
   useEffect(() => {
     if (isLoginError) {
-      toast.error((loginError as any).data.message)
+      toast.error((loginError as any).data?.message)
     }
     if (isRegisterError) {
-      toast.error((registerError as any).data.message)
+      toast.error((registerError as any).data?.message)
     }
   }, [isLoginError, isRegisterError, loginError, registerError])
 

@@ -11,7 +11,21 @@ export interface IGoods {
   img: string;
   typeId: number;
   brandId: number;
-  infos: [];
+}
+
+export interface IGoodsDetail {
+  data: {
+    id: number;
+    name: string;
+    price: string;
+    rating: string;
+    info: [];
+    img: string;
+    typeId: number;
+    brandId: number;
+    createdAt: string;
+    updatedAt: string;
+  };
 }
 
 export const goodsApi = createApi({
@@ -32,18 +46,19 @@ export const goodsApi = createApi({
   endpoints: (builder) => ({
     createGoods: builder.mutation({
       query: (body: FormData) => ({
-        url: "/product",
+        url: "/goods",
         method: "POST",
         body,
       }),
       invalidatesTags: ["goods"],
     }),
     getAllGoods: builder.query<any, void>({
-      query: () => "/product",
+      query: () => "/goods",
       providesTags: ["goods"],
     }),
-    getOneGoods: builder.query<any, unknown>({
-      query: (id) => `/product/${id}`,
+    getOneGoods: builder.query<IGoodsDetail, unknown>({
+      query: (id) => `/goods/${id}`,
+      providesTags: ["goods"],
     }),
   }),
 });
@@ -52,4 +67,5 @@ export const {
   useCreateGoodsMutation,
   useGetAllGoodsQuery,
   useGetOneGoodsQuery,
+  useLazyGetOneGoodsQuery,
 } = goodsApi;

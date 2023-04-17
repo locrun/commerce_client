@@ -28,6 +28,11 @@
   font-weight: 700;
   font-size: 14px;
   text-transform: uppercase;
+  transition: 0.3s ease-in;
+  &:hover {
+    transition: 0.3s ease-in;
+    background-color: #0069d9;
+  }
 }
 
 .form {

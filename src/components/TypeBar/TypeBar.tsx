@@ -19,6 +19,7 @@ export const TypeBar: FC = (props) => {
   const [active, setActive] = useState("Стиральные машины");
 
 
+
   return (
     <ul className={s.list}>
       {types?.map(({ id, name }: ITypes) =>

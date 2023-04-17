@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import {
@@ -26,13 +27,15 @@ type Info = {
 
 
 export const CreateGoods: FC = () => {
+
+  const navigate = useNavigate()
   const [tabIndex, setTabIndex] = useState(0);
 
   const [type, setType] = useState("")
   const [info, setInfo] = useState<Info>([{ title: "", description: "", number: Date.now() }])
 
   const { data: types } = useGetAllTypesQuery()
-  const [fetchCreateProduct] = useCreateGoodsMutation()
+  const [fetchCreateGoods] = useCreateGoodsMutation()
   const [fetchCreateType] = useCreateTypeMutation()
 
 
@@ -53,18 +56,15 @@ export const CreateGoods: FC = () => {
 
   const submitFrom: SubmitHandler<FieldValues> = async (data) => {
     const file = data.file[0]
-
-    reset()
     try {
       const formData = new FormData()
       formData.append("name", data.name)
-      formData.append("typeId", data.type)
       formData.append("price", data.price)
       formData.append("img", file)
+      formData.append("typeId", data.type)
       formData.append("info", JSON.stringify(info))
-      await fetchCreateProduct(formData)
-      setInfo([])
-      alert("Новый товар добавлен")
+      await fetchCreateGoods(formData)
+      setInfo([]); reset(); navigate("/")
     } catch (error) {
       console.warn(error)
       alert("Ошибка при отправке данных!")
@@ -73,10 +73,8 @@ export const CreateGoods: FC = () => {
 
   const createType = async () => {
     await fetchCreateType({ name: type })
-    alert("Тип устройства добавлен")
     setType('')
   }
-
 
   return (
     <div className={s.container}>

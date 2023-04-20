@@ -2,7 +2,7 @@ import { FC, useEffect } from "react";
 import { BrowserRouter, Route, Routes, Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { useAppSelector } from "./hooks/redux-hooks";
-import { Header } from "./components";
+import { Header } from "./components/Header/Header";
 import { HomePage } from "./pages/HomePage";
 import { privateRoutes, publicRoutes, authRoutes } from "./routes";
 import { useLazyCheckUserQuery } from "./redux/api/authApi";

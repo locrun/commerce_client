@@ -11,7 +11,6 @@ import { path } from "../../utils/constants"
 import 'react-toastify/dist/ReactToastify.css';
 import s from "./AuthForm.module.scss"
 
-
 interface User {
   email: string,
   password: string

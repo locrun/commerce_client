@@ -1,11 +1,10 @@
 import { FC, useEffect } from "react";
 import { Pagination } from '@mui/material';
-import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { Card } from "./Card";
-import { useLazyGetAllGoodsQuery } from "../../redux/api";
-import { IGoods } from '../../redux/api'
-import s from "./Card.module.scss"
+import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
+import { useLazyGetAllGoodsQuery, IGoods } from "../../redux/api";
 import { setCurrentPage, setLimit } from "../../redux/slices/pageSlice";
+import s from "./Card.module.scss"
 
 
 export const GoodsList: FC = () => {
@@ -21,15 +20,11 @@ export const GoodsList: FC = () => {
       })
     })
 
-  const pageCount: any[] = [];
-
-  console.log(limit)
+  const pageCount: number[] = [];
 
   for (let i = 1; i < Math.ceil(count / limit); i++) {
     pageCount.push(i + 1);
   }
-
-
 
   useEffect(() => {
     fetchFilterGoods(`?typeId=${typeId}&page=${currentPage || "1"}&limit=${limit}`)
@@ -50,7 +45,6 @@ export const GoodsList: FC = () => {
         {goods?.map((goods: IGoods) => {
           return <Card key={goods.id} goods={goods} />
         })}
-
       </div >
       <>
         {!!pageCount.length &&

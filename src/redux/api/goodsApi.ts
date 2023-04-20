@@ -32,12 +32,6 @@ export interface IGoodsDetail {
   };
 }
 
-export interface IPagination {
-  typeId: number;
-  limit: number;
-  offset: number;
-}
-
 export const goodsApi = createApi({
   reducerPath: "goods",
   tagTypes: ["goods"],
@@ -45,11 +39,9 @@ export const goodsApi = createApi({
     baseUrl: process.env.REACT_APP_API_URL,
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).auth.token;
-
       if (token) {
         headers.set("Authorization", `Bearer ${token}`);
       }
-
       return headers;
     },
   }),
@@ -76,7 +68,7 @@ export const goodsApi = createApi({
     }),
   }),
 });
-//?$typeId={body.typeId}&limit=${body.limit}&offset=${body.offset}
+
 export const {
   useCreateGoodsMutation,
   useGetAllGoodsQuery,

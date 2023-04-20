@@ -9,7 +9,7 @@ import { useLazyCheckUserQuery } from "./redux/api/authApi";
 import { selectAuth } from "./redux/slices/authSlice";
 
 import { path } from "./utils/constants";
-import s from './styles/index.module.scss'
+
 
 
 export const App: FC = () => {
@@ -56,10 +56,10 @@ export const App: FC = () => {
 
 export const Layout: FC = () => {
   return (
-    <div className={s.wrapper}>
-      <div className={s.container}>
+    <div className="wrapper">
+      <div className="container">
         <Header />
-        <main className={s.body}>
+        <main className="body">
           <Outlet />
         </main>
       </div>

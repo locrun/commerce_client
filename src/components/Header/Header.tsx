@@ -4,8 +4,8 @@ import { toast } from "react-toastify";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { logout, selectAuth } from "../../redux/slices/authSlice";
 import { path } from "../../utils/constants";
-import { AdminPanel } from "./AdminPanel/AdminPanel";
-import s from "./Header.module.scss";
+import { AdminPanel } from "../AdminPanel/AdminPanel";
+import s from "./Header.module.scss"
 
 export const Header: FC = () => {
   const navigate = useNavigate();

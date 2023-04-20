@@ -1,6 +1,7 @@
-import process from 'process'
+
 import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
+import process from 'process'
 import { IGoods } from '../../redux/api'
 import s from "./Card.module.scss"
 
@@ -18,7 +19,7 @@ export const Card: FC<PropsCard> = ({ goods: { id, name, price, rating, img } })
         <div className={s.type}>Type</div>
       </div>
       <div className={s.image}>
-        <img src={process.env.REACT_APP_API_URL + img} alt="картинка" />
+        <img src={process.env.REACT_APP_IMAGE_URL + img} alt={name} />
       </div>
       <div className={s.footer}>
         <h4 className={s.title}>{name}</h4>

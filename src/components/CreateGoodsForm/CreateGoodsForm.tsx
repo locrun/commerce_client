@@ -11,7 +11,7 @@ import {
 import 'react-tabs/style/react-tabs.css';
 
 import cn from "classnames"
-import s from "./CreateGoods.module.scss";
+import s from "./CreateGoodsForm.module.scss";
 
 
 const tabs = [
@@ -26,7 +26,7 @@ type Info = {
 }[]
 
 
-export const CreateGoods: FC = () => {
+export const CreateGoodsForm: FC = () => {
 
   const navigate = useNavigate()
   const [tabIndex, setTabIndex] = useState(0);

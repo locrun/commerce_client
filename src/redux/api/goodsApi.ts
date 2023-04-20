@@ -1,7 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import process from "process";
 import { RootState } from "../store";
 
-interface Response {}
+interface Response {
+  rows: IGoods;
+  count: number;
+}
 
 export interface IGoods {
   id: number;
@@ -28,17 +32,24 @@ export interface IGoodsDetail {
   };
 }
 
+export interface IPagination {
+  typeId: number;
+  limit: number;
+  offset: number;
+}
+
 export const goodsApi = createApi({
   reducerPath: "goods",
   tagTypes: ["goods"],
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000/api",
-
+    baseUrl: process.env.REACT_APP_API_URL,
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).auth.token;
+
       if (token) {
         headers.set("Authorization", `Bearer ${token}`);
       }
+
       return headers;
     },
   }),
@@ -52,20 +63,23 @@ export const goodsApi = createApi({
       }),
       invalidatesTags: ["goods"],
     }),
-    getAllGoods: builder.query<any, void>({
-      query: () => "/goods",
+    getAllGoods: builder.query<any, any>({
+      query: (query = "") => `/goods${query}`,
       providesTags: ["goods"],
+      transformResponse: (response: Response) => ({
+        goods: response.rows,
+        count: response.count,
+      }),
     }),
     getOneGoods: builder.query<IGoodsDetail, unknown>({
       query: (id) => `/goods/${id}`,
-      providesTags: ["goods"],
     }),
   }),
 });
-
+//?$typeId={body.typeId}&limit=${body.limit}&offset=${body.offset}
 export const {
   useCreateGoodsMutation,
   useGetAllGoodsQuery,
+  useLazyGetAllGoodsQuery,
   useGetOneGoodsQuery,
-  useLazyGetOneGoodsQuery,
 } = goodsApi;

@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
-import { CreateGoods } from '../components'
+import { CreateGoodsForm } from '../components'
 
 export const AdminPanel: FC = () => {
   return (
-    <CreateGoods />
+    <CreateGoodsForm />
   )
 }

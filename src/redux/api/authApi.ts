@@ -1,47 +1,44 @@
-
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { RootState } from '../store'
-
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import process from "process";
+import { RootState } from "../store";
 
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000/api",
+    baseUrl: process.env.REACT_APP_API_URL,
 
     prepareHeaders: (headers, { getState }) => {
-      const token = (getState() as RootState).auth.token
+      const token = (getState() as RootState).auth.token;
       if (token) {
-        headers.set('Authorization', `Bearer ${token}`)
+        headers.set("Authorization", `Bearer ${token}`);
       }
-      return headers
+      return headers;
     },
   }),
 
   endpoints: (builder) => ({
     loginUser: builder.mutation({
-      query: (body: { email: string, password: string }) => ({
-        url: '/user/login',
-        method: 'POST',
-        body
+      query: (body: { email: string; password: string }) => ({
+        url: "/user/login",
+        method: "POST",
+        body,
       }),
     }),
     registerUser: builder.mutation({
-      query: (body: { email: string, password: string }) => ({
-        url: '/user/registration',
-        method: 'POST',
-        body
+      query: (body: { email: string; password: string }) => ({
+        url: "/user/registration",
+        method: "POST",
+        body,
       }),
     }),
     checkUser: builder.query({
       query: () => "/user/check",
     }),
-  })
-
-})
-
-
+  }),
+});
 
 export const {
   useLoginUserMutation,
   useRegisterUserMutation,
-  useLazyCheckUserQuery } = authApi
+  useLazyCheckUserQuery,
+} = authApi;

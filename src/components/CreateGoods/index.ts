@@ -1,1 +1,0 @@
-export { CreateGoods } from "./CreateGoods";

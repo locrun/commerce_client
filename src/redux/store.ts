@@ -11,9 +11,9 @@ import {
   persistReducer,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import authSlice from "./slices/authSlice";
-import productSlice from "./slices/productSlice";
-
+import authReducer from "./slices/authSlice";
+import pageReducer from "./slices/pageSlice";
+import typeReducer from "./slices/typeSlice";
 import { goodsApi, typeApi, authApi } from "./api";
 
 const persistConfig = {
@@ -22,8 +22,9 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  auth: authSlice,
-  product: productSlice,
+  auth: authReducer,
+  page: pageReducer,
+  type: typeReducer,
   [authApi.reducerPath]: authApi.reducer,
   [goodsApi.reducerPath]: goodsApi.reducer,
   [typeApi.reducerPath]: typeApi.reducer,
@@ -32,6 +33,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
   reducer: persistedReducer,
+
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

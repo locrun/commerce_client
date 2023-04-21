@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import { TypeBar } from '../components/TypeBar/TypeBar'
-import { GoodsList } from '../components/GoodsList/GoodsList'
+import { TypeBar } from '../components'
+import { GoodsList } from '../components'
 
 export const HomePage: FC = () => {
   return (

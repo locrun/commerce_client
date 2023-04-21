@@ -1,10 +1,16 @@
 import { FC } from "react";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
+import LogoutIcon from '@mui/icons-material/Logout';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
+import { AdminPanel } from "../AdminPanel/AdminPanel";
 import { logout, selectAuth } from "../../redux/slices/authSlice";
 import { path } from "../../utils/constants";
-import { AdminPanel } from "../AdminPanel/AdminPanel";
+
 import s from "./Header.module.scss"
 
 export const Header: FC = () => {
@@ -22,44 +28,43 @@ export const Header: FC = () => {
     toast.success("User Logout Successfully")
   }
 
-
   return (
     <header className={s.header}>
-      <div className={s.flex}>
-        {
-          isAdmin && isAuth ? <AdminPanel /> :
-            <>
-              <Link to="/" className={s.logo}>
-                <span>техно</span>Store
-              </Link>
-              <div className={s.buttons}>
-                {
-                  isAuth ?
-                    <div className={s.flex}>
-                      <div className={s.flex} style={{ marginRight: "50px" }}>
-                        <button style={{ marginRight: "20px" }} className={s.button} onClick={() => navigate("/admin")}>
-                          Админ панель
-                        </button>
-                        {isDetail &&
-                          <button style={{ backgroundColor: "#cc4e5c" }}
-                            className={s.button} onClick={() => navigate("/")}>
-                            На главную
-                          </button>
-                        }
-                      </div>
-                      <button className={s.button} onClick={handleLogout}>
-                        Выйти
-                      </button>
-                    </div>
-                    :
-                    <button className={s.button} onClick={() => navigate("/auth")}>
-                      Aвторизуйтесь
-                    </button>
+      {isAdmin && isAuth ? <AdminPanel /> :
+        <>
+          <Link to="/" className={s.logo}>
+            <span>техно</span>Store
+          </Link>
+          {
+            isAuth ?
+              <div className={s.flex}>
+                {isDetail &&
+                  <div className={s.icon} onClick={() => navigate("/")} >
+                    <HomeOutlinedIcon color="primary" fontSize="large" />
+                    <span>На главную</span>
+                  </div>
                 }
+                <div className={s.icon} onClick={() => navigate("/admin")}>
+                  <AdminPanelSettingsOutlinedIcon color="primary" fontSize="large" />
+                  <span>Админ панель</span>
+                </div>
+                <div className={s.icon} onClick={() => navigate("/basket")}>
+                  <ShoppingCartOutlinedIcon color="primary" fontSize="large" />
+                  <span>Корзина</span>
+                </div>
+                <div className={s.icon} onClick={handleLogout}>
+                  <LogoutIcon color="primary" fontSize="large" />
+                  <span>Выйти</span>
+                </div>
               </div>
-            </>
-        }
-      </div >
+              :
+              <div className={s.icon} onClick={() => navigate("/auth")}>
+                <LoginOutlinedIcon color="primary" fontSize="large" />
+                <span>Войти</span>
+              </div>
+          }
+        </>
+      }
     </header >
   );
 };

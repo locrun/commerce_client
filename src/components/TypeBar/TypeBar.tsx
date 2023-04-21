@@ -1,11 +1,11 @@
 import { FC, useState } from "react";
 import { useAppDispatch } from "../../hooks/redux-hooks";
 import { useGetAllTypesQuery } from "../../redux/api";
+import { setSelectedType } from "../../redux/slices/typeSlice";
+import { setCurrentPage } from "../../redux/slices/pageSlice";
 
 import cn from "classnames";
 import s from "./TypeBar.module.scss"
-import { setSelectedType } from "../../redux/slices/typeSlice";
-import { setCurrentPage } from "../../redux/slices/pageSlice";
 
 
 interface ITypes {

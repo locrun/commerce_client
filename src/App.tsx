@@ -54,7 +54,7 @@ export const App: FC = () => {
   );
 };
 
-export const Layout: FC = () => {
+const Layout: FC = () => {
   return (
     <div className="wrapper">
       <div className="container">

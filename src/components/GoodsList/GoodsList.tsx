@@ -49,7 +49,7 @@ export const GoodsList: FC = () => {
       <>
         {!!pageCount.length &&
           <Pagination
-            count={pageCount.length}
+            count={pageCount[0]}
             page={currentPage}
             onChange={(event: React.ChangeEvent<unknown>, value: number) =>
               handleChange(event, value)}

@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useParams } from "react-router-dom";
-import { IGoodsDetail, useGetOneGoodsQuery } from "../../redux/api";
+import { IGoodsDetail, useAddItemsToCartMutation, useGetOneGoodsQuery } from "../../redux/api";
 
 import s from "./DetailGoods.module.scss"
 
@@ -8,6 +8,12 @@ export const DetailGoods: FC = () => {
   const { id } = useParams()
 
   const { data } = useGetOneGoodsQuery<IGoodsDetail>(id)
+  const [fetchAddCart] = useAddItemsToCartMutation()
+
+
+  const GoodsHandlerAddToCart = async () => {
+    await fetchAddCart(data.id)
+  }
 
   return (
     <>
@@ -36,7 +42,7 @@ export const DetailGoods: FC = () => {
                 )
               })}
             </ul>
-            <button className={s.button}>
+            <button className={s.button} onClick={() => GoodsHandlerAddToCart()}>
               Добавить в корзину
             </button>
           </div>

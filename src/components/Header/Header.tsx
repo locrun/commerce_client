@@ -48,7 +48,7 @@ export const Header: FC = () => {
                   <AdminPanelSettingsOutlinedIcon color="primary" fontSize="large" />
                   <span>Админ панель</span>
                 </div>
-                <div className={s.icon} onClick={() => navigate("/basket")}>
+                <div className={s.icon} onClick={() => navigate("/cart")}>
                   <ShoppingCartOutlinedIcon color="primary" fontSize="large" />
                   <span>Корзина</span>
                 </div>

@@ -57,11 +57,11 @@ export const goodsApi = createApi({
     }),
     getAllGoods: builder.query<any, any>({
       query: (query = "") => `/goods${query}`,
-      providesTags: ["goods"],
       transformResponse: (response: Response) => ({
         goods: response.rows,
         count: response.count,
       }),
+      providesTags: ["goods"],
     }),
     getOneGoods: builder.query<IGoodsDetail, unknown>({
       query: (id) => `/goods/${id}`,

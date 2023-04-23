@@ -14,7 +14,7 @@ import storage from "redux-persist/lib/storage";
 import authReducer from "./slices/authSlice";
 import pageReducer from "./slices/pageSlice";
 import typeReducer from "./slices/typeSlice";
-import { goodsApi, typeApi, authApi } from "./api";
+import { goodsApi, typeApi, authApi, basketApi } from "./api";
 
 const persistConfig = {
   key: "root",
@@ -28,6 +28,7 @@ const rootReducer = combineReducers({
   [authApi.reducerPath]: authApi.reducer,
   [goodsApi.reducerPath]: goodsApi.reducer,
   [typeApi.reducerPath]: typeApi.reducer,
+  [basketApi.reducerPath]: basketApi.reducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
@@ -42,7 +43,8 @@ const store = configureStore({
     })
       .concat(authApi.middleware)
       .concat(goodsApi.middleware)
-      .concat(typeApi.middleware),
+      .concat(typeApi.middleware)
+      .concat(basketApi.middleware),
 });
 export const persistor = persistStore(store);
 

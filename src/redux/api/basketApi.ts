@@ -2,9 +2,9 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import process from "process";
 import { RootState } from "../store";
 
-export const cartApi = createApi({
-  reducerPath: "cart",
-  tagTypes: ["cart"],
+export const basketApi = createApi({
+  reducerPath: "basket",
+  tagTypes: ["basket"],
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_API_URL,
     prepareHeaders: (headers, { getState }) => {
@@ -17,19 +17,20 @@ export const cartApi = createApi({
   }),
 
   endpoints: (builder) => ({
-    addItemsToCart: builder.mutation({
-      query: (body) => ({
-        url: "/cart",
+    addProductsToBasket: builder.mutation({
+      query: (body: { productId: number }) => ({
+        url: "/basket",
         method: "POST",
         body,
       }),
-      invalidatesTags: ["cart"],
+      invalidatesTags: ["basket"],
     }),
-    getAllCartItems: builder.query<any, any>({
-      query: () => `/cart`,
-      providesTags: ["cart"],
+    getAllBasketProducts: builder.query<any, any>({
+      query: () => `/basket`,
+      providesTags: ["basket"],
     }),
   }),
 });
 
-export const { useGetAllCartItemsQuery, useAddItemsToCartMutation } = cartApi;
+export const { useGetAllBasketProductsQuery, useAddProductsToBasketMutation } =
+  basketApi;

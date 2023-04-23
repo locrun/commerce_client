@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useParams } from "react-router-dom";
-import { IGoodsDetail, useAddItemsToCartMutation, useGetOneGoodsQuery } from "../../redux/api";
+import { IGoodsDetail, useAddProductsToBasketMutation, useGetAllBasketProductsQuery, useGetOneGoodsQuery } from "../../redux/api";
 
 import s from "./DetailGoods.module.scss"
 
@@ -8,11 +8,13 @@ export const DetailGoods: FC = () => {
   const { id } = useParams()
 
   const { data } = useGetOneGoodsQuery<IGoodsDetail>(id)
-  const [fetchAddCart] = useAddItemsToCartMutation()
+  const [fetchAddBasket] = useAddProductsToBasketMutation()
 
+  const { data: result } = useGetAllBasketProductsQuery(false)
+  console.log(result)
 
   const GoodsHandlerAddToCart = async () => {
-    await fetchAddCart(data.id)
+    await fetchAddBasket({ productId: data.id })
   }
 
   return (

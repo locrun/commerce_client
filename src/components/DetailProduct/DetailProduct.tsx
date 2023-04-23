@@ -2,9 +2,9 @@ import { FC } from "react";
 import { useParams } from "react-router-dom";
 import { IProductDetail, useAddProductsToBasketMutation, useGetAllBasketProductsQuery, useGetOneProductQuery } from "../../redux/api";
 
-import s from "./DetailGoods.module.scss"
+import s from "./DetailProduct.module.scss"
 
-export const DetailGoods: FC = () => {
+export const DetailProduct: FC = () => {
   const { id } = useParams()
 
   const { data } = useGetOneProductQuery<IProductDetail>(id)

@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import { DetailGoods } from '../components'
+import { DetailProduct } from '../components'
 
 export const DetailPage: FC = () => {
-  return <DetailGoods />
+  return <DetailProduct />
 }

@@ -7,10 +7,10 @@ import { setCurrentPage, setLimit } from "../../redux/slices/pageSlice";
 import s from "./Card.module.scss"
 
 
-export const GoodsList: FC = () => {
+export const ProductList: FC = () => {
   const dispatch = useAppDispatch()
   const { limit, currentPage } = useAppSelector((state) => state.page)
-  const { categoryId } = useAppSelector(state => state.type)
+  const { categoryId } = useAppSelector(state => state.categories)
 
   const [fetchFilterGoods, { products, count }] = useLazyGetAllProductsQuery(
     {

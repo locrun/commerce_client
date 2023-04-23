@@ -3,11 +3,11 @@ import process from "process";
 import { RootState } from "../store";
 
 interface Response {
-  rows: IGoods;
+  rows: IProduct;
   count: number;
 }
 
-export interface IGoods {
+export interface IProduct {
   id: number;
   name: string;
   price: string;
@@ -17,7 +17,7 @@ export interface IGoods {
   brandId: number;
 }
 
-export interface IGoodsDetail {
+export interface IProductDetail {
   data: {
     id: number;
     name: string;
@@ -33,8 +33,8 @@ export interface IGoodsDetail {
 }
 
 export const goodsApi = createApi({
-  reducerPath: "goods",
-  tagTypes: ["goods"],
+  reducerPath: "product",
+  tagTypes: ["product"],
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_API_URL,
     prepareHeaders: (headers, { getState }) => {
@@ -49,22 +49,22 @@ export const goodsApi = createApi({
   endpoints: (builder) => ({
     createGoods: builder.mutation({
       query: (body: FormData) => ({
-        url: "/goods",
+        url: "/product",
         method: "POST",
         body,
       }),
-      invalidatesTags: ["goods"],
+      invalidatesTags: ["product"],
     }),
     getAllGoods: builder.query<any, any>({
-      query: (query = "") => `/goods${query}`,
+      query: (query = "") => `/product${query}`,
       transformResponse: (response: Response) => ({
         goods: response.rows,
         count: response.count,
       }),
-      providesTags: ["goods"],
+      providesTags: ["product"],
     }),
-    getOneGoods: builder.query<IGoodsDetail, unknown>({
-      query: (id) => `/goods/${id}`,
+    getOneGoods: builder.query<IProductDetail, unknown>({
+      query: (id) => `/product/${id}`,
     }),
   }),
 });

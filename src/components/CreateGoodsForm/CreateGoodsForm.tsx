@@ -31,7 +31,7 @@ export const CreateGoodsForm: FC = () => {
   const navigate = useNavigate()
   const [tabIndex, setTabIndex] = useState(0);
 
-  const [type, setType] = useState("")
+  const [type, setType] = useState("Смартфоны")
   const [info, setInfo] = useState<Info>([{ title: "", description: "", number: Date.now() }])
 
   const { data: types } = useGetAllTypesQuery()
@@ -61,7 +61,7 @@ export const CreateGoodsForm: FC = () => {
       formData.append("name", data.name)
       formData.append("price", data.price)
       formData.append("img", file)
-      formData.append("typeId", data.type)
+      formData.append("categoryId", data.type)
       formData.append("info", JSON.stringify(info))
       await fetchCreateGoods(formData)
       setInfo([]); reset(); navigate("/")
@@ -71,7 +71,7 @@ export const CreateGoodsForm: FC = () => {
     }
   }
 
-  const createType = async () => {
+  const createCategory = async () => {
     await fetchCreateType({ name: type })
     setType('')
   }
@@ -170,7 +170,7 @@ export const CreateGoodsForm: FC = () => {
             onChange={(e) => setType(e.target.value)}
             className={s.input}
           />
-          <button onClick={createType} className={s.button}>Загрузить</button>
+          <button onClick={createCategory} className={s.button}>Загрузить</button>
         </TabPanel>
       </Tabs>
     </div >

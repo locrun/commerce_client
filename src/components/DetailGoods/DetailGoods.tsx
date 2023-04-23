@@ -1,13 +1,13 @@
 import { FC } from "react";
 import { useParams } from "react-router-dom";
-import { IGoodsDetail, useAddProductsToBasketMutation, useGetAllBasketProductsQuery, useGetOneGoodsQuery } from "../../redux/api";
+import { IProductDetail, useAddProductsToBasketMutation, useGetAllBasketProductsQuery, useGetOneGoodsQuery } from "../../redux/api";
 
 import s from "./DetailGoods.module.scss"
 
 export const DetailGoods: FC = () => {
   const { id } = useParams()
 
-  const { data } = useGetOneGoodsQuery<IGoodsDetail>(id)
+  const { data } = useGetOneGoodsQuery<IProductDetail>(id)
   const [fetchAddBasket] = useAddProductsToBasketMutation()
 
   const { data: result } = useGetAllBasketProductsQuery(false)

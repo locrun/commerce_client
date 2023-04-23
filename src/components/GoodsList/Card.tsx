@@ -2,13 +2,13 @@
 import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
 import process from 'process'
-import { IGoods } from '../../redux/api'
+import { IProduct } from '../../redux/api'
 import s from "./Card.module.scss"
 
 type PropsCard = {
-  goods: IGoods
+  products: IProduct
 }
-export const Card: FC<PropsCard> = ({ goods: { id, name, price, rating, img } }) => {
+export const Card: FC<PropsCard> = ({ products: { id, name, price, rating, img } }) => {
 
   return (
     <Link to={`detail/${id}`} className={s.card}>

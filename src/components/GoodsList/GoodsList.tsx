@@ -2,7 +2,7 @@ import { FC, useEffect } from "react";
 import { Pagination } from '@mui/material';
 import { Card } from "./Card";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
-import { useLazyGetAllGoodsQuery, IGoods } from "../../redux/api";
+import { useLazyGetAllGoodsQuery, IProduct } from "../../redux/api";
 import { setCurrentPage, setLimit } from "../../redux/slices/pageSlice";
 import s from "./Card.module.scss"
 
@@ -42,8 +42,8 @@ export const GoodsList: FC = () => {
   return (
     <div>
       <div className={s.container}>
-        {goods?.map((goods: IGoods) => {
-          return <Card key={goods.id} goods={goods} />
+        {goods?.map((goods: IProduct) => {
+          return <Card key={goods.id} products={goods} />
         })}
       </div >
       <>

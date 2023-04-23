@@ -2,16 +2,14 @@ import process from "process";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store";
 
-export interface ITypes {
+export interface ICategory {
   id: number;
   name: string;
-  createdAt: string;
-  updatedAt: string;
 }
 
-export const typeApi = createApi({
-  reducerPath: "types",
-  tagTypes: ["type"],
+export const categoryApi = createApi({
+  reducerPath: "category",
+  tagTypes: ["category"],
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_API_URL,
 
@@ -25,19 +23,20 @@ export const typeApi = createApi({
   }),
 
   endpoints: (builder) => ({
-    createType: builder.mutation({
+    createCategory: builder.mutation({
       query: (body: { name: string }) => ({
-        url: "/type",
+        url: "/category",
         method: "POST",
         body,
       }),
-      invalidatesTags: ["type"],
+      invalidatesTags: ["category"],
     }),
-    getAllTypes: builder.query<ITypes[], void>({
-      query: () => "/type",
-      providesTags: ["type"],
+    getAllCategories: builder.query<ICategory[], void>({
+      query: () => "/category",
+      providesTags: ["category"],
     }),
   }),
 });
 
-export const { useGetAllTypesQuery, useCreateTypeMutation } = typeApi;
+export const { useGetAllCategoriesQuery, useCreateCategoryMutation } =
+  categoryApi;

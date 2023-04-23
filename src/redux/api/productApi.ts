@@ -32,7 +32,7 @@ export interface IProductDetail {
   };
 }
 
-export const goodsApi = createApi({
+export const productApi = createApi({
   reducerPath: "product",
   tagTypes: ["product"],
   baseQuery: fetchBaseQuery({
@@ -47,7 +47,7 @@ export const goodsApi = createApi({
   }),
 
   endpoints: (builder) => ({
-    createGoods: builder.mutation({
+    createProduct: builder.mutation({
       query: (body: FormData) => ({
         url: "/product",
         method: "POST",
@@ -55,23 +55,23 @@ export const goodsApi = createApi({
       }),
       invalidatesTags: ["product"],
     }),
-    getAllGoods: builder.query<any, any>({
+    getAllProducts: builder.query<any, any>({
       query: (query = "") => `/product${query}`,
       transformResponse: (response: Response) => ({
-        goods: response.rows,
+        products: response.rows,
         count: response.count,
       }),
       providesTags: ["product"],
     }),
-    getOneGoods: builder.query<IProductDetail, unknown>({
+    getOneProduct: builder.query<IProductDetail, unknown>({
       query: (id) => `/product/${id}`,
     }),
   }),
 });
 
 export const {
-  useCreateGoodsMutation,
-  useGetAllGoodsQuery,
-  useLazyGetAllGoodsQuery,
-  useGetOneGoodsQuery,
-} = goodsApi;
+  useCreateProductMutation,
+  useGetAllProductsQuery,
+  useLazyGetAllProductsQuery,
+  useGetOneProductQuery,
+} = productApi;

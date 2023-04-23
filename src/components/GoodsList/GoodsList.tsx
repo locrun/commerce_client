@@ -2,7 +2,7 @@ import { FC, useEffect } from "react";
 import { Pagination } from '@mui/material';
 import { Card } from "./Card";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
-import { useLazyGetAllGoodsQuery, IProduct } from "../../redux/api";
+import { useLazyGetAllProductsQuery, IProduct } from "../../redux/api";
 import { setCurrentPage, setLimit } from "../../redux/slices/pageSlice";
 import s from "./Card.module.scss"
 
@@ -10,12 +10,12 @@ import s from "./Card.module.scss"
 export const GoodsList: FC = () => {
   const dispatch = useAppDispatch()
   const { limit, currentPage } = useAppSelector((state) => state.page)
-  const { typeId } = useAppSelector(state => state.type)
+  const { categoryId } = useAppSelector(state => state.type)
 
-  const [fetchFilterGoods, { goods, count }] = useLazyGetAllGoodsQuery(
+  const [fetchFilterGoods, { products, count }] = useLazyGetAllProductsQuery(
     {
       selectFromResult: ({ data }) => ({
-        goods: data?.goods,
+        products: data?.products,
         count: data?.count
       })
     })
@@ -27,8 +27,8 @@ export const GoodsList: FC = () => {
   }
 
   useEffect(() => {
-    fetchFilterGoods(`?typeId=${typeId}&page=${currentPage || "1"}&limit=${limit}`)
-  }, [typeId, limit, currentPage, fetchFilterGoods])
+    fetchFilterGoods(`?categoryId=${categoryId}&page=${currentPage || "1"}&limit=${limit}`)
+  }, [categoryId, limit, currentPage, fetchFilterGoods])
 
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export const GoodsList: FC = () => {
   return (
     <div>
       <div className={s.container}>
-        {goods?.map((goods: IProduct) => {
+        {products?.map((goods: IProduct) => {
           return <Card key={goods.id} products={goods} />
         })}
       </div >

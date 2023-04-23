@@ -1,20 +1,20 @@
 import { FC } from "react";
 import { useParams } from "react-router-dom";
-import { IProductDetail, useAddProductsToBasketMutation, useGetAllBasketProductsQuery, useGetOneGoodsQuery } from "../../redux/api";
+import { IProductDetail, useAddProductsToBasketMutation, useGetAllBasketProductsQuery, useGetOneProductQuery } from "../../redux/api";
 
 import s from "./DetailGoods.module.scss"
 
 export const DetailGoods: FC = () => {
   const { id } = useParams()
 
-  const { data } = useGetOneGoodsQuery<IProductDetail>(id)
-  const [fetchAddBasket] = useAddProductsToBasketMutation()
+  const { data } = useGetOneProductQuery<IProductDetail>(id)
+  const [fetchBasket] = useAddProductsToBasketMutation()
 
   const { data: result } = useGetAllBasketProductsQuery(false)
   console.log(result)
 
-  const GoodsHandlerAddToCart = async () => {
-    await fetchAddBasket({ productId: data.id })
+  const AddProductToBasket = async () => {
+    await fetchBasket({ productId: data.id })
   }
 
   return (
@@ -44,7 +44,7 @@ export const DetailGoods: FC = () => {
                 )
               })}
             </ul>
-            <button className={s.button} onClick={() => GoodsHandlerAddToCart()}>
+            <button className={s.button} onClick={() => AddProductToBasket()}>
               Добавить в корзину
             </button>
           </div>

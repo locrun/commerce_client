@@ -3,7 +3,7 @@ export enum path {
   AUTH_ROUTE = "/auth",
   REGISTRATION_ROUTE = "/registration",
   CATALOG_ROUTE = "/",
-  BASKET_ROUTE = "/cart",
+  BASKET_ROUTE = "/basket",
   PRODUCT_DETAIL_ROUTE = "/detail",
   NOT_FOUND = "*",
 }

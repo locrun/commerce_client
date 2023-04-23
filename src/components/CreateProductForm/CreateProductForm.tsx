@@ -3,15 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import {
-  useCreateGoodsMutation,
-  useCreateTypeMutation,
-  useGetAllTypesQuery
+  useCreateProductMutation,
+  useCreateCategoryMutation,
+  useGetAllCategoriesQuery
 } from "../../redux/api";
 
 import 'react-tabs/style/react-tabs.css';
 
 import cn from "classnames"
-import s from "./CreateGoodsForm.module.scss";
+import s from "./CreateProductForm.module.scss";
 
 
 const tabs = [
@@ -26,7 +26,7 @@ type Info = {
 }[]
 
 
-export const CreateGoodsForm: FC = () => {
+export const CreateProductForm: FC = () => {
 
   const navigate = useNavigate()
   const [tabIndex, setTabIndex] = useState(0);
@@ -34,9 +34,9 @@ export const CreateGoodsForm: FC = () => {
   const [type, setType] = useState("Смартфоны")
   const [info, setInfo] = useState<Info>([{ title: "", description: "", number: Date.now() }])
 
-  const { data: types } = useGetAllTypesQuery()
-  const [fetchCreateGoods] = useCreateGoodsMutation()
-  const [fetchCreateType] = useCreateTypeMutation()
+  const { data: categories } = useGetAllCategoriesQuery()
+  const [fetchCreateProduct] = useCreateProductMutation()
+  const [fetchCreateType] = useCreateCategoryMutation()
 
 
   const { register, handleSubmit, reset } = useForm()
@@ -63,7 +63,7 @@ export const CreateGoodsForm: FC = () => {
       formData.append("img", file)
       formData.append("categoryId", data.type)
       formData.append("info", JSON.stringify(info))
-      await fetchCreateGoods(formData)
+      await fetchCreateProduct(formData)
       setInfo([]); reset(); navigate("/")
     } catch (error) {
       console.warn(error)
@@ -107,7 +107,7 @@ export const CreateGoodsForm: FC = () => {
             >
               <option value="">Выберите тип</option>
               {
-                types?.map(({ id, name }) => {
+                categories?.map(({ id, name }) => {
                   return <option key={id} value={id}>{name}</option>
                 })
               }

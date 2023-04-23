@@ -12,7 +12,7 @@ export const Category: FC = (props) => {
   const dispatch = useAppDispatch()
 
   const { data: category } = useGetAllCategoriesQuery()
-  const { categoryId } = useAppSelector(state => state.type)
+  const { categoryId } = useAppSelector(state => state.categories)
 
   const getTypeId = (id: number) => {
     dispatch(setIdCategory({ categoryId: id }))

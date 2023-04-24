@@ -56,7 +56,7 @@ export const productApi = createApi({
       invalidatesTags: ["product"],
     }),
     getAllProducts: builder.query<any, any>({
-      query: (query = "") => `/product${query}`,
+      query: (query = " ") => `/product${query}`,
       transformResponse: (response: Response) => ({
         products: response.rows,
         count: response.count,

@@ -23,9 +23,6 @@ export const Header: FC = () => {
   const isDetail = path.PRODUCT_DETAIL_ROUTE === pathname.slice(0, 7)
   const isAdmin = path.ADMIN_ROUTE === pathname
 
-  console.log("isAdmin", isAdmin)
-  console.log("isAuth", isAuth)
-  
   const handleLogout = () => {
     dispatch(logout())
     toast.success("User Logout Successfully")

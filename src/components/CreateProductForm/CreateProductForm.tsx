@@ -55,9 +55,8 @@ export const CreateProductForm: FC = () => {
   }
 
   const submitFrom: SubmitHandler<FieldValues> = async (data) => {
-
+    const file = data.file[0]
     try {
-      const file = data.file[0]
       const formData = new FormData()
       formData.append("name", data.name)
       formData.append("price", data.price)

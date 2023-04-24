@@ -65,7 +65,9 @@ export const CreateProductForm: FC = () => {
       formData.append("info", JSON.stringify(info))
       await fetchCreateProduct(formData)
       setInfo([]); reset();
-      //navigate("/")
+      setTimeout(() => {
+        navigate("/")
+      }, 1000)
     } catch (error) {
       console.warn(error)
       alert("Ошибка при отправке данных!")
@@ -75,6 +77,9 @@ export const CreateProductForm: FC = () => {
   const createCategory = async () => {
     await fetchCreateType({ name: type })
     setType('')
+    setTimeout(() => {
+      navigate("/")
+    }, 1000)
   }
 
   return (

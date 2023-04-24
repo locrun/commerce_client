@@ -34,7 +34,7 @@ export interface IProductDetail {
 
 export const productApi = createApi({
   reducerPath: "product",
-  tagTypes: ["product"],
+  //tagTypes: ["product"],
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_API_URL,
     prepareHeaders: (headers, { getState }) => {
@@ -53,7 +53,7 @@ export const productApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["product"],
+      //invalidatesTags: ["product"],
     }),
     getAllProducts: builder.query<any, any>({
       query: (query = " ") => `/product${query}`,
@@ -61,7 +61,7 @@ export const productApi = createApi({
         products: response.rows,
         count: response.count,
       }),
-      providesTags: ["product"],
+      //providesTags: ["product"],
     }),
     getOneProduct: builder.query<IProductDetail, unknown>({
       query: (id) => `/product/${id}`,
@@ -71,6 +71,7 @@ export const productApi = createApi({
 
 export const {
   useCreateProductMutation,
+
   useGetAllProductsQuery,
   useLazyGetAllProductsQuery,
   useGetOneProductQuery,

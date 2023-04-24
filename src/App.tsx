@@ -10,8 +10,6 @@ import { selectAuth } from "./redux/slices/authSlice";
 
 import { path } from "./utils/constants";
 
-
-
 export const App: FC = () => {
 
   const isAuth = useAppSelector(selectAuth)

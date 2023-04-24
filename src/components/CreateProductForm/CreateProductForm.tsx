@@ -60,7 +60,7 @@ export const CreateProductForm: FC = () => {
       const formData = new FormData()
       formData.append("name", data.name)
       formData.append("price", data.price)
-      formData.append("image", file)
+      formData.append("img", file)
       formData.append("categoryId", data.type)
       formData.append("info", JSON.stringify(info))
       await fetchCreateProduct(formData)

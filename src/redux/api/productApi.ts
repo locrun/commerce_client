@@ -51,25 +51,14 @@ export const productApi = createApi({
       query: (body: FormData) => ({
         url: "/product",
         method: "POST",
-        Headers: [
-          { "Access-Control-Allow-Credentials": "true" },
-          { "Access-Control-Allow-Origin": "*" },
-          {
-            "Access-Control-Allow-Methods": "GET,OPTIONS,PATCH,DELETE,POST,PUT",
-          },
-          {
-            "Access-Control-Allow-Headers":
-              "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
-          },
-        ],
         body,
       }),
       invalidatesTags: ["product"],
     }),
     getAllProducts: builder.query<any, any>({
-      query: (query = " ") => `/product`,
+      query: (query = " ") => `/product${query}`,
       transformResponse: (response: Response) => ({
-        products: response.rows,
+        product: response.rows,
         count: response.count,
       }),
       providesTags: ["product"],
@@ -82,7 +71,6 @@ export const productApi = createApi({
 
 export const {
   useCreateProductMutation,
-
   useGetAllProductsQuery,
   useLazyGetAllProductsQuery,
   useGetOneProductQuery,

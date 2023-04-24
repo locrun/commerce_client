@@ -12,10 +12,10 @@ export const ProductList: FC = () => {
   const { limit, currentPage } = useAppSelector((state) => state.page)
   const { categoryId } = useAppSelector(state => state.categories)
 
-  const [fetchFilterGoods, { products, count }] = useLazyGetAllProductsQuery(
+  const [fetchFilterGoods, { product, count }] = useLazyGetAllProductsQuery(
     {
       selectFromResult: ({ data }) => ({
-        products: data?.products,
+        product: data?.product,
         count: data?.count
       })
     })
@@ -26,9 +26,9 @@ export const ProductList: FC = () => {
     pageCount.push(i + 1);
   }
 
-  // useEffect(() => {
-  //   fetchFilterGoods(`?categoryId=${categoryId}&page=${currentPage || "1"}&limit=${limit}`)
-  // }, [categoryId, limit, currentPage, fetchFilterGoods])
+  useEffect(() => {
+    fetchFilterGoods(`?categoryId=${categoryId}&page=${currentPage || "1"}&limit=${limit}`)
+  }, [categoryId, limit, currentPage, fetchFilterGoods])
 
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export const ProductList: FC = () => {
   return (
     <div>
       <div className={s.container}>
-        {products?.map((goods: IProduct) => {
+        {product?.map((goods: IProduct) => {
           return <Card key={goods.id} products={goods} />
         })}
       </div >

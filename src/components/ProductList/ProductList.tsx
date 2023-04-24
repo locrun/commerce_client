@@ -26,9 +26,9 @@ export const ProductList: FC = () => {
     pageCount.push(i + 1);
   }
 
-  useEffect(() => {
-    fetchFilterGoods(`?categoryId=${categoryId}&page=${currentPage || "1"}&limit=${limit}`)
-  }, [categoryId, limit, currentPage, fetchFilterGoods])
+  // useEffect(() => {
+  //   fetchFilterGoods(`?categoryId=${categoryId}&page=${currentPage || "1"}&limit=${limit}`)
+  // }, [categoryId, limit, currentPage, fetchFilterGoods])
 
 
   useEffect(() => {

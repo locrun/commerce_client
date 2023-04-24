@@ -31,7 +31,7 @@ export const CreateProductForm: FC = () => {
   const navigate = useNavigate()
   const [tabIndex, setTabIndex] = useState(0);
 
-  const [type, setType] = useState("Смартфоны")
+  const [type, setType] = useState("")
   const [info, setInfo] = useState<Info>([{ title: "", description: "", number: Date.now() }])
 
   const { data: categories } = useGetAllCategoriesQuery()
@@ -55,8 +55,9 @@ export const CreateProductForm: FC = () => {
   }
 
   const submitFrom: SubmitHandler<FieldValues> = async (data) => {
-    const file = data.file[0]
+
     try {
+      const file = data.file[0]
       const formData = new FormData()
       formData.append("name", data.name)
       formData.append("price", data.price)

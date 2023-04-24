@@ -16,7 +16,7 @@ export const App: FC = () => {
 
   const isAuth = useAppSelector(selectAuth)
 
-  const [fetchCheckUser, { data }] = useLazyCheckUserQuery()
+  const [fetchCheckUser] = useLazyCheckUserQuery()
 
   useEffect(() => {
     fetchCheckUser(true)

@@ -25,6 +25,7 @@ export const Header: FC = () => {
 
   console.log("isAdmin", isAdmin)
   console.log("isAuth", isAuth)
+  
   const handleLogout = () => {
     dispatch(logout())
     toast.success("User Logout Successfully")

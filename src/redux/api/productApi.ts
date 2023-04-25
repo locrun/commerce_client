@@ -53,7 +53,6 @@ export const productApi = createApi({
         url: "/product",
         method: "POST",
         body,
-        mode: "no-cors",
       }),
       invalidatesTags: ["product"],
     }),

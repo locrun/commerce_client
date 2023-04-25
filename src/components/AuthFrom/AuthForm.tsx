@@ -13,7 +13,7 @@ import s from "./AuthForm.module.scss"
 
 interface User {
   email: string,
-  password: string
+  password: string,
 }
 
 export const AuthForm: FC = () => {

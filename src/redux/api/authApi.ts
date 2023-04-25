@@ -1,7 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import process from "process";
 import { RootState } from "../store";
-
+interface User {
+  email: string;
+  password: string;
+  role?: "ADMIN";
+}
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
@@ -25,10 +29,12 @@ export const authApi = createApi({
       }),
     }),
     registerUser: builder.mutation({
-      query: (body: { email: string; password: string; role: "ADMIN" }) => ({
+      query: ({ email, password, role }: User) => ({
         url: "/user/registration",
         method: "POST",
-        body,
+        email,
+        password,
+        role,
       }),
     }),
     checkUser: builder.query({

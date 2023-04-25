@@ -3,7 +3,7 @@ import process from "process";
 import { RootState } from "../store";
 
 export const basketApi = createApi({
-  reducerPath: "basket",
+  reducerPath: "basketApi",
   tagTypes: ["basket"],
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_API_URL,

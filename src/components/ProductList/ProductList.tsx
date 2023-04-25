@@ -10,7 +10,7 @@ import s from "./Card.module.scss"
 export const ProductList: FC = () => {
   const dispatch = useAppDispatch()
   const { limit, currentPage } = useAppSelector((state) => state.page)
-  const { categoryId } = useAppSelector(state => state.categories)
+  const { typeId } = useAppSelector(state => state.type)
 
   const [fetchFilterGoods, { product, count }] = useLazyGetAllProductsQuery(
     {
@@ -26,9 +26,9 @@ export const ProductList: FC = () => {
     pageCount.push(i + 1);
   }
 
-  //useEffect(() => {
-  // fetchFilterGoods(`?categoryId=${categoryId}&page=${currentPage || "1"}&limit=${limit}`)
-  //}, [categoryId, limit, currentPage, fetchFilterGoods])
+  useEffect(() => {
+    fetchFilterGoods(`?categoryId=${typeId}&page=${currentPage || "1"}&limit=${limit}`)
+  }, [typeId, limit, currentPage, fetchFilterGoods])
 
 
   useEffect(() => {

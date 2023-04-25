@@ -33,7 +33,7 @@ export interface IProductDetail {
 }
 
 export const productApi = createApi({
-  reducerPath: "product",
+  reducerPath: "productApi",
   tagTypes: ["product"],
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_API_URL,
@@ -56,7 +56,7 @@ export const productApi = createApi({
       invalidatesTags: ["product"],
     }),
     getAllProducts: builder.query<any, any>({
-      query: (query) => `/product`,
+      query: (query = " ") => `/product${query}`,
       transformResponse: (response: Response) => ({
         product: response.rows,
         count: response.count,

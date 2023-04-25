@@ -7,9 +7,9 @@ export interface ICategory {
   name: string;
 }
 
-export const categoryApi = createApi({
-  reducerPath: "category",
-  tagTypes: ["category"],
+export const typeApi = createApi({
+  reducerPath: "typeApi",
+  tagTypes: ["type"],
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_API_URL,
 
@@ -25,18 +25,17 @@ export const categoryApi = createApi({
   endpoints: (builder) => ({
     createCategory: builder.mutation({
       query: (body: { name: string }) => ({
-        url: "/category",
+        url: "/type",
         method: "POST",
         body,
       }),
-      invalidatesTags: ["category"],
+      invalidatesTags: ["type"],
     }),
     getAllCategories: builder.query<ICategory[], void>({
-      query: () => "/category",
-      providesTags: ["category"],
+      query: () => "/type",
+      providesTags: ["type"],
     }),
   }),
 });
 
-export const { useGetAllCategoriesQuery, useCreateCategoryMutation } =
-  categoryApi;
+export const { useGetAllCategoriesQuery, useCreateCategoryMutation } = typeApi;

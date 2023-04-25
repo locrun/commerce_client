@@ -1,5 +1,5 @@
 export * from "./AuthFrom";
-export * from "./Category";
+export * from "./TypeBar";
 export * from "./Header";
 export * from "./ProductList";
 export * from "./CreateProductForm";

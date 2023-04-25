@@ -13,8 +13,8 @@ import {
 import storage from "redux-persist/lib/storage";
 import authReducer from "./slices/authSlice";
 import pageReducer from "./slices/pageSlice";
-import categoryReducer from "./slices/categorySlice";
-import { productApi, categoryApi, authApi, basketApi } from "./api";
+import typeReducer from "./slices/typeSlice";
+import { productApi, typeApi, authApi, basketApi } from "./api";
 
 const persistConfig = {
   key: "root",
@@ -24,10 +24,10 @@ const persistConfig = {
 const rootReducer = combineReducers({
   auth: authReducer,
   page: pageReducer,
-  categories: categoryReducer,
+  type: typeReducer,
   [authApi.reducerPath]: authApi.reducer,
   [productApi.reducerPath]: productApi.reducer,
-  [categoryApi.reducerPath]: categoryApi.reducer,
+  [typeApi.reducerPath]: typeApi.reducer,
   [basketApi.reducerPath]: basketApi.reducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -43,7 +43,7 @@ const store = configureStore({
     })
       .concat(authApi.middleware)
       .concat(productApi.middleware)
-      .concat(categoryApi.middleware)
+      .concat(typeApi.middleware)
       .concat(basketApi.middleware),
 });
 export const persistor = persistStore(store);

@@ -17,7 +17,7 @@ export const App: FC = () => {
   const [fetchCheckUser] = useLazyCheckUserQuery()
 
   useEffect(() => {
-    fetchCheckUser(true)
+    fetchCheckUser(false)
     console.log("Check function")
   }, [fetchCheckUser])
 

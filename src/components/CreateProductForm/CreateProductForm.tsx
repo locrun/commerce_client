@@ -60,13 +60,14 @@ export const CreateProductForm: FC = () => {
       const formData = new FormData()
       formData.append("name", data.name)
       formData.append("price", data.price)
-      formData.append("img", file)
+      formData.append("image", file)
       formData.append("typeId", data.type)
       formData.append("info", JSON.stringify(info))
       await fetchCreateProduct(formData).unwrap()
         .then((payload) => console.log('fulfilled', payload))
         .catch((error) => console.error('rejected', error))
-      setInfo([]); reset();
+      setInfo([]);
+      reset();
       setTimeout(() => {
         navigate("/")
       }, 1000)
@@ -76,7 +77,7 @@ export const CreateProductForm: FC = () => {
     }
   }
 
-  const createCategory = async () => {
+  const createType = async () => {
     await fetchCreateType({ name: type }).unwrap()
       .then((payload) => console.log('fulfilled', payload))
       .catch((error) => console.error('rejected', error))
@@ -180,7 +181,7 @@ export const CreateProductForm: FC = () => {
             onChange={(e) => setType(e.target.value)}
             className={s.input}
           />
-          <button onClick={createCategory} className={s.button}>Загрузить</button>
+          <button onClick={createType} className={s.button}>Загрузить</button>
         </TabPanel>
       </Tabs>
     </div >

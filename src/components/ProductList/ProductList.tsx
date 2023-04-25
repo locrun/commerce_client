@@ -12,17 +12,11 @@ export const ProductList: FC = () => {
   const { limit, currentPage } = useAppSelector((state) => state.page)
   const { typeId } = useAppSelector(state => state.type)
 
-  const [fetchFilterGoods, { product, count }] = useLazyGetAllProductsQuery(
-    {
-      selectFromResult: ({ data }) => ({
-        product: data?.product,
-        count: data?.count
-      })
-    })
+  const [fetchFilterGoods, { data }] = useLazyGetAllProductsQuery()
 
   const pageCount: number[] = [];
 
-  for (let i = 1; i < Math.ceil(count / limit); i++) {
+  for (let i = 1; i < Math.ceil(data.count / limit); i++) {
     pageCount.push(i + 1);
   }
 
@@ -42,7 +36,7 @@ export const ProductList: FC = () => {
   return (
     <div>
       <div className={s.container}>
-        {product?.map((goods: IProduct) => {
+        {data?.rows.map((goods: IProduct) => {
           return <Card key={goods.id} products={goods} />
         })}
       </div >

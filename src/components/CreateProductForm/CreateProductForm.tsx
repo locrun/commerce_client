@@ -61,7 +61,7 @@ export const CreateProductForm: FC = () => {
       formData.append("name", data.name)
       formData.append("price", data.price)
       formData.append("img", file)
-      formData.append("categoryId", data.type)
+      formData.append("typeId", data.type)
       formData.append("info", JSON.stringify(info))
       await fetchCreateProduct(formData)
       setInfo([]); reset();

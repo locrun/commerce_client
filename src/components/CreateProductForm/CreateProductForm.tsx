@@ -63,7 +63,9 @@ export const CreateProductForm: FC = () => {
       formData.append("img", file)
       formData.append("typeId", data.type)
       formData.append("info", JSON.stringify(info))
-      await fetchCreateProduct(formData)
+      await fetchCreateProduct(formData).unwrap()
+        .then((payload) => console.log('fulfilled', payload))
+        .catch((error) => console.error('rejected', error))
       setInfo([]); reset();
       setTimeout(() => {
         navigate("/")
@@ -75,7 +77,9 @@ export const CreateProductForm: FC = () => {
   }
 
   const createCategory = async () => {
-    await fetchCreateType({ name: type })
+    await fetchCreateType({ name: type }).unwrap()
+      .then((payload) => console.log('fulfilled', payload))
+      .catch((error) => console.error('rejected', error))
     setType('')
     setTimeout(() => {
       navigate("/")

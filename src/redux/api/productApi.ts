@@ -35,6 +35,7 @@ export interface IProductDetail {
 export const productApi = createApi({
   reducerPath: "productApi",
   tagTypes: ["product"],
+
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_API_URL,
     prepareHeaders: (headers, { getState }) => {

@@ -18,6 +18,7 @@ export const App: FC = () => {
 
   useEffect(() => {
     fetchCheckUser(true)
+    console.log("Check function")
   }, [fetchCheckUser])
 
   return (

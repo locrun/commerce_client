@@ -14,6 +14,7 @@ import s from "./AuthForm.module.scss"
 interface User {
   email: string,
   password: string,
+  role: string
 }
 
 export const AuthForm: FC = () => {
@@ -44,7 +45,7 @@ export const AuthForm: FC = () => {
       if (isLogin) {
         await loginUser(data)
       } else {
-        await registerUser(data)
+        await registerUser({ ...data, role: "ADMIN" })
       }
     }
   }

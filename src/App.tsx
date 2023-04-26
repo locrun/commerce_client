@@ -17,9 +17,18 @@ export const App: FC = () => {
   const [fetchCheckUser] = useLazyCheckUserQuery()
 
   useEffect(() => {
-    fetchCheckUser(false)
-    console.log("Check function")
+    async function fetchData() {
+      try {
+        const payload = await fetchCheckUser(false).unwrap();
+        console.log('fulfilled', payload)
+      } catch (error) {
+        console.error('rejected', error);
+      }
+    }
+    fetchData();
   }, [fetchCheckUser])
+
+
 
   return (
     <BrowserRouter>

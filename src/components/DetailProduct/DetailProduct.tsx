@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useParams } from "react-router-dom";
-import { IProductDetail, useAddProductsToBasketMutation, useGetAllBasketProductsQuery, useGetOneProductQuery } from "../../redux/api";
+import { IProductDetail, useAddProductsToBasketMutation, useGetOneProductQuery } from "../../redux/api";
 
 import s from "./DetailProduct.module.scss"
 
@@ -10,11 +10,9 @@ export const DetailProduct: FC = () => {
   const { data } = useGetOneProductQuery<IProductDetail>(id)
   const [fetchBasket] = useAddProductsToBasketMutation()
 
-  const { data: result } = useGetAllBasketProductsQuery(false)
-  console.log(result)
 
   const AddProductToBasket = async () => {
-    await fetchBasket({ productId: data.id })
+    //await fetchBasket({ productId: data.id })
   }
 
   return (
@@ -24,7 +22,7 @@ export const DetailProduct: FC = () => {
         <>
           <div className={s.image}>
             <img
-              src={process.env.REACT_APP_IMAGE_URL + data.img}
+              src={process.env.REACT_APP_IMAGE_URL + data.image}
               alt={data.name}
             />
           </div>

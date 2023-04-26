@@ -8,7 +8,7 @@ import s from "./Card.module.scss"
 type PropsCard = {
   products: IProduct
 }
-export const Card: FC<PropsCard> = ({ products: { id, name, price, rating, img } }) => {
+export const Card: FC<PropsCard> = ({ products: { id, name, price, rating, image } }) => {
 
   return (
     <Link to={`detail/${id}`} className={s.card}>
@@ -19,7 +19,7 @@ export const Card: FC<PropsCard> = ({ products: { id, name, price, rating, img }
         <div className={s.type}>Type</div>
       </div>
       <div className={s.image}>
-        <img src={process.env.REACT_APP_IMAGE_URL + img} alt={name} />
+        <img src={process.env.REACT_APP_IMAGE_URL + image} alt={name} />
       </div>
       <div className={s.footer}>
         <h4 className={s.title}>{name}</h4>

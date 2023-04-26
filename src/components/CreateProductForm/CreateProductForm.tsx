@@ -64,7 +64,7 @@ export const CreateProductForm: FC = () => {
       formData.append("typeId", data.type)
       formData.append("info", JSON.stringify(info))
       await fetchCreateProduct(formData).unwrap()
-        .then((payload) => console.log('fulfilled', payload))
+        .then((payload: any) => console.log('fulfilled', payload))
         .catch((error) => console.error('rejected', error))
       setInfo([]);
       reset();

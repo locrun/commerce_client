@@ -12,7 +12,7 @@ export interface IProduct {
   name: string;
   price: string;
   rating: string;
-  img: string;
+  image: string;
   typeId: number;
   brandId: number;
 }
@@ -24,7 +24,7 @@ export interface IProductDetail {
     price: string;
     rating: string;
     info: [];
-    img: string;
+    image: string;
     typeId: number;
     brandId: number;
     createdAt: string;
@@ -33,7 +33,7 @@ export interface IProductDetail {
 }
 
 export const productApi = createApi({
-  reducerPath: "productApi",
+  reducerPath: "product",
   tagTypes: ["product"],
 
   baseQuery: fetchBaseQuery({
@@ -57,7 +57,7 @@ export const productApi = createApi({
       invalidatesTags: ["product"],
     }),
     getAllProducts: builder.query<any, any>({
-      query: (query = " ") => `/product${query}`,
+      query: (query = "") => `/product${query}`,
       transformResponse: (response: Response) => ({
         product: response.rows,
         count: response.count,

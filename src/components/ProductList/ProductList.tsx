@@ -14,7 +14,7 @@ export const ProductList: FC = () => {
 
   const [fetchFilterGoods, { product, count }] = useLazyGetAllProductsQuery(
     {
-      selectFromResult: ({ data }) => ({
+      selectFromResult: ({ data }: any) => ({
         product: data?.product,
         count: data?.count
       })
@@ -27,7 +27,7 @@ export const ProductList: FC = () => {
   }
 
   useEffect(() => {
-    fetchFilterGoods(`?categoryId=${typeId}&page=${currentPage || "1"}&limit=${limit}`)
+    fetchFilterGoods(`?typeId=${typeId}&page=${currentPage || "1"}&limit=${limit}`)
   }, [typeId, limit, currentPage, fetchFilterGoods])
 
 
@@ -38,6 +38,7 @@ export const ProductList: FC = () => {
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     dispatch(setCurrentPage(value))
   };
+
 
   return (
     <div>

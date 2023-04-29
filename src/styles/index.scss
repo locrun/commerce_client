@@ -18,11 +18,9 @@ img {
 :root {
   --blue: #316bf3;
 }
-.body {
+.main {
   display: flex;
-  margin-right: -15px;
-  margin-left: -15px;
-  margin-top: 100px;
+  margin-top: 45px;
 }
 
 .wrapper {
@@ -37,8 +35,10 @@ img {
   border-radius: 16px;
   position: relative;
 }
-.container {
-  margin: 0 auto;
-  padding-left: 15px;
-  padding-right: 15px;
+.header-plate {
+  max-width: 1200px;
+  margin-left: -40px;
+  margin-right: -40px;
+  height: 60px;
+  background-color: #316bf3;
 }

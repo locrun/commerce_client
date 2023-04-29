@@ -1,16 +1,13 @@
 .container {
-  width: 940px;
+  min-width: 915px;
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
-  position: relative;
 }
 
 .card {
-  width: 280px;
+  min-width: 280px;
   position: relative;
-  margin: 0 15px;
   margin-bottom: 25px;
   background-color: #fff;
   border-radius: 8px;

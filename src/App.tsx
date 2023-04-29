@@ -65,12 +65,11 @@ export const App: FC = () => {
 const Layout: FC = () => {
   return (
     <div className="wrapper">
-      <div className="container">
-        <Header />
-        <main className="body">
-          <Outlet />
-        </main>
-      </div>
+      <Header />
+      <div className="header-plate"></div>
+      <main className="main">
+        <Outlet />
+      </main>
     </div>
   );
 };

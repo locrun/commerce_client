@@ -1,22 +1,9 @@
 .header {
-  padding-top: 35px;
-  padding-bottom: 30px;
+  padding: 35px 15px 30px 15px;
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.header:after {
-  position: absolute;
-  content: "";
-  background-color: #316bf3;
-  left: 0;
-  right: 0;
-  top: 115px;
-  height: 60px;
-  margin-left: -55px;
-  margin-right: -55px;
 }
 
 .flex {
@@ -80,4 +67,34 @@ a.logo:hover span {
   font-weight: 900;
   font-size: 38px;
   color: var(--blue);
+}
+
+//Header Admin
+.flex {
+  min-width: 200px;
+  display: flex;
+  justify-content: space-between;
+}
+.title {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  font-size: 38px;
+  color: var(--blue);
+}
+.icon {
+  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+  cursor: pointer;
+  &:last-child {
+    margin-right: 0;
+  }
+  &:hover {
+    color: #014b9b;
+    svg {
+      fill: #014b9b;
+    }
+  }
 }

@@ -6,9 +6,9 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { logout } from '../../redux/slices/authSlice'
 import { toast } from "react-toastify";
-import s from "./AdminPanel.module.scss"
+import s from "./Header.module.scss"
 
-export const AdminPanel: FC = () => {
+export const HeaderAdmin: FC = () => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
@@ -16,7 +16,6 @@ export const AdminPanel: FC = () => {
     dispatch(logout())
     toast.success("User Logout Successfully")
   }
-
   return (
     <>
       <h2 className={s.title}>Админ панель</h2>
@@ -37,5 +36,3 @@ export const AdminPanel: FC = () => {
     </>
   )
 }
-
-

@@ -1,12 +1,17 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import process from "process";
 import { RootState } from "../store";
+
+import process from "process";
 
 export const basketApi = createApi({
   reducerPath: "basketApi",
   tagTypes: ["basket"],
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_API_URL,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).auth.token;
       if (token) {
@@ -17,20 +22,55 @@ export const basketApi = createApi({
   }),
 
   endpoints: (builder) => ({
-    addProductsToBasket: builder.mutation({
-      query: (body: { productId: number }) => ({
-        url: "/basket",
-        method: "POST",
-        body,
+    append: builder.mutation({
+      query: (productId: number) => ({
+        url: `basket/product/${productId}/append/1`,
+        method: "PUT",
+        SameSite: "None",
+        Secure: true,
+      }),
+    }),
+
+    getOne: builder.query<any, any>({
+      query: () => "/basket/getone",
+      providesTags: ["basket"],
+    }),
+
+    increment: builder.mutation({
+      query: (productId: number) => ({
+        url: `basket/product/${productId}/increment/1`,
+        method: "PUT",
+        SameSite: "None",
+        Secure: true,
       }),
       invalidatesTags: ["basket"],
     }),
-    getAllBasketProducts: builder.query<any, any>({
-      query: () => `/basket`,
-      providesTags: ["basket"],
+    decrement: builder.mutation({
+      query: (productId: number) => ({
+        url: `basket/product/${productId}/decrement/1`,
+        method: "PUT",
+        SameSite: "None",
+        Secure: true,
+      }),
+      invalidatesTags: ["basket"],
+    }),
+
+    remove: builder.mutation({
+      query: (productId: number) => ({
+        url: `basket/product/${productId}/remove`,
+        method: "PUT",
+        SameSite: "None",
+        Secure: true,
+      }),
+      invalidatesTags: ["basket"],
     }),
   }),
 });
 
-export const { useGetAllBasketProductsQuery, useAddProductsToBasketMutation } =
-  basketApi;
+export const {
+  useLazyGetOneQuery,
+  useAppendMutation,
+  useRemoveMutation,
+  useIncrementMutation,
+  useDecrementMutation,
+} = basketApi;

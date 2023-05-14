@@ -1,14 +1,19 @@
 .container {
   min-width: 915px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  max-width: 915px;
+  margin-bottom: 25px;
+  display: grid;
+  grid-template-rows: 3fr;
+  grid-template-columns: repeat(auto-fill, 282px);
+  justify-content: center;
+  row-gap: 25px;
+  column-gap: 25px;
 }
 
 .card {
   min-width: 280px;
   position: relative;
-  margin-bottom: 25px;
+  //margin-bottom: 25px;
   background-color: #fff;
   border-radius: 8px;
   border: 1px solid rgba(0, 0, 0, 0.125);

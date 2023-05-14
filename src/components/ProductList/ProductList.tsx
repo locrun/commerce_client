@@ -41,7 +41,7 @@ export const ProductList: FC = () => {
 
 
   return (
-    <div>
+    <section>
       <div className={s.container}>
         {product?.map((goods: IProduct) => {
           return <Card key={goods.id} products={goods} />
@@ -58,6 +58,6 @@ export const ProductList: FC = () => {
           />
         }
       </>
-    </div>
+    </section>
   );
 };

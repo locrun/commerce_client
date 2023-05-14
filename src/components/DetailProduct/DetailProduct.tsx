@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useParams } from "react-router-dom";
-import { IProductDetail, useAddProductsToBasketMutation, useGetOneProductQuery } from "../../redux/api";
+import { IProductDetail, useGetOneProductQuery, useAppendMutation } from "../../redux/api";
 
 import s from "./DetailProduct.module.scss"
 
@@ -8,11 +8,12 @@ export const DetailProduct: FC = () => {
   const { id } = useParams()
 
   const { data } = useGetOneProductQuery<IProductDetail>(id)
-  const [fetchBasket] = useAddProductsToBasketMutation()
+  const [append] = useAppendMutation()
 
 
   const AddProductToBasket = async () => {
-    //await fetchBasket({ productId: data.id })
+    await append(data.id)
+    console.log('Товар добавлен в корзину')
   }
 
   return (

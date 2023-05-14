@@ -82,7 +82,7 @@ export const AuthForm: FC = () => {
 
 
   return (
-    <div className={s.container}>
+    <section className={s.container}>
       <div className={s.formWrapper}>
         <h3 className={s.title}>{isLogin ? "Авторизация" : "Регистрация"}</h3>
         <div className={s.line}></div>
@@ -123,6 +123,6 @@ export const AuthForm: FC = () => {
           </div>
         </form>
       </div>
-    </div>
+    </section>
   )
 }

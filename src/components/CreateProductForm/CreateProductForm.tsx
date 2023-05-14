@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import {
   useCreateProductMutation,
@@ -88,7 +88,7 @@ export const CreateProductForm: FC = () => {
   }
 
   return (
-    <div className={s.container}>
+    <section className={s.container}>
       <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
         <TabList className={s.tabList} >
           {tabs.map((tab) => {
@@ -184,6 +184,6 @@ export const CreateProductForm: FC = () => {
           <button onClick={createType} className={s.button}>Загрузить</button>
         </TabPanel>
       </Tabs>
-    </div >
+    </section >
   );
 };

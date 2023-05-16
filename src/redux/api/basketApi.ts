@@ -29,6 +29,7 @@ export const basketApi = createApi({
         SameSite: "None",
         Secure: true,
       }),
+      invalidatesTags: ["basket"],
     }),
 
     getOne: builder.query<any, any>({
@@ -69,6 +70,7 @@ export const basketApi = createApi({
 
 export const {
   useLazyGetOneQuery,
+  useGetOneQuery,
   useAppendMutation,
   useRemoveMutation,
   useIncrementMutation,

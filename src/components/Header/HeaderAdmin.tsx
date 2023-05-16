@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAppDispatch } from '../../hooks/redux-hooks'
+import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -11,6 +11,8 @@ import s from "./Header.module.scss"
 export const HeaderAdmin: FC = () => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
+
+  const { quantity } = useAppSelector(state => state.cart)
 
   const handleLogout = () => {
     dispatch(logout())
@@ -27,6 +29,7 @@ export const HeaderAdmin: FC = () => {
         <div className={s.icon} onClick={() => navigate("/basket")}>
           <ShoppingCartOutlinedIcon color="primary" fontSize="large" />
           <span>Корзина</span>
+          <span>{quantity > 0 && quantity}</span>
         </div>
         <div className={s.icon} onClick={handleLogout} >
           <LogoutIcon color="primary" fontSize="large" />

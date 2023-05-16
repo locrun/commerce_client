@@ -1,7 +1,7 @@
 import { FC, useEffect } from "react";
 import { BrowserRouter, Route, Routes, Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import { useAppSelector } from "./hooks/redux-hooks";
+import { useAppDispatch, useAppSelector } from "./hooks/redux-hooks";
 import { Header } from "./components";
 import { HomePage } from "./pages/HomePage";
 import { privateRoutes, publicRoutes, authRoutes } from "./routes";
@@ -9,12 +9,15 @@ import { useLazyCheckUserQuery } from "./redux/api/authApi";
 import { selectAuth } from "./redux/slices/authSlice";
 
 import { path } from "./utils/constants";
+import { useLazyGetOneQuery } from "./redux/api";
+import { setQuantityItemsCart } from "./redux/slices/cartSlice";
 
 export const App: FC = () => {
-
+  const dispatch = useAppDispatch()
   const isAuth = useAppSelector(selectAuth)
 
   const [fetchCheckUser] = useLazyCheckUserQuery()
+  const [fetchBasket, { data }] = useLazyGetOneQuery()
 
   useEffect(() => {
     async function fetchData() {
@@ -28,6 +31,13 @@ export const App: FC = () => {
     fetchData();
   }, [fetchCheckUser])
 
+  useEffect(() => {
+    fetchBasket(true)
+  }, [fetchBasket])
+
+  useEffect(() => {
+    dispatch(setQuantityItemsCart(data?.products?.length))
+  }, [data, dispatch])
 
 
   return (
@@ -64,7 +74,7 @@ export const App: FC = () => {
 
 const Layout: FC = () => {
   return (
-    <div className="wrapper">
+    <div className="container">
       <Header />
       <div className="header-plate"></div>
       <main className="main">

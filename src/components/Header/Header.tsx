@@ -18,6 +18,7 @@ export const Header: FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch()
 
+  const { quantity } = useAppSelector(state => state.cart)
   const { pathname } = useLocation()
   const isAuth = useAppSelector(selectAuth)
 
@@ -57,13 +58,13 @@ export const Header: FC = () => {
                   <AdminPanelSettingsOutlinedIcon color="primary" fontSize="large" />
                   <span>Админ панель</span>
                 </div>
-                {
-                  !isBasketPage &&
-                  <div className={s.icon} onClick={() => navigate("/basket")}>
-                    <ShoppingCartOutlinedIcon color="primary" fontSize="large" />
-                    <span>Корзина</span>
-                  </div>
-                }
+
+                <div className={s.icon} onClick={() => navigate("/basket")}>
+                  <ShoppingCartOutlinedIcon color="primary" fontSize="large" />
+                  <span>Корзина</span>
+                  <span>{quantity > 0 && quantity}</span>
+                </div>
+
                 <div className={s.icon} onClick={handleLogout}>
                   <LogoutIcon color="primary" fontSize="large" />
                   <span>Выйти</span>

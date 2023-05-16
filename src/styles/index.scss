@@ -1,18 +1,16 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   height: auto;
   min-height: 100%;
   margin: 0;
-  box-sizing: border-box;
   background: #306bf2;
   background: linear-gradient(top left, #306bf2, #0a41c5);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
 }
 
 :root {
@@ -23,9 +21,9 @@ img {
   margin-top: 45px;
 }
 
-.wrapper {
+.container {
   background-color: rgb(255, 255, 255);
-  max-width: 1120px;
+  max-width: 1200px;
   margin: 0 auto;
   margin-top: 55px;
   padding-left: 40px;
@@ -42,11 +40,18 @@ img {
   height: 60px;
   background-color: #316bf3;
 }
-
+img {
+  max-width: 100%;
+  height: auto;
+}
 button {
   outline: none;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
+}
+
+a {
+  text-decoration: none;
 }

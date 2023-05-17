@@ -121,6 +121,13 @@
   background-color: #316bf3;
   color: #fff;
 }
+.buttons {
+  min-width: 115px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 // .card-top__sale {
 //   background-color: #ff3805;

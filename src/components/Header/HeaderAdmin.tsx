@@ -12,7 +12,7 @@ export const HeaderAdmin: FC = () => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
-  const { quantity } = useAppSelector(state => state.cart)
+  const { quantity } = useAppSelector(state => state.basket)
 
   const handleLogout = () => {
     dispatch(logout())
@@ -29,7 +29,7 @@ export const HeaderAdmin: FC = () => {
         <div className={s.icon} onClick={() => navigate("/basket")}>
           <ShoppingCartOutlinedIcon color="primary" fontSize="large" />
           <span>Корзина</span>
-          <span className={s.quantity}>{quantity > 0 && quantity}</span>
+          {quantity > 0 && <span className={s.quantity}>{quantity}</span>}
         </div>
         <div className={s.icon} onClick={handleLogout} >
           <LogoutIcon color="primary" fontSize="large" />

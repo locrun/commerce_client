@@ -12,6 +12,8 @@ export const ProductList: FC = () => {
   const { limit, currentPage } = useAppSelector((state) => state.page)
   const { typeId } = useAppSelector(state => state.type)
 
+
+
   const [fetchFilterGoods, { product, count }] = useLazyGetAllProductsQuery(
     {
       selectFromResult: ({ data }: any) => ({
@@ -38,7 +40,6 @@ export const ProductList: FC = () => {
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     dispatch(setCurrentPage(value))
   };
-
 
   return (
     <section>

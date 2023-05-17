@@ -8,6 +8,11 @@ interface Response {
 }
 
 export interface IProduct {
+  basket_product: {
+    quantity: number;
+    basketId: number;
+    productId: number;
+  };
   id: number;
   name: string;
   price: string;

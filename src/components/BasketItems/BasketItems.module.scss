@@ -92,27 +92,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  .increase {
-    width: 35px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background: $pale-orange-yellow;
-    color: $white;
-  }
-
-  .decrease {
-    width: 35px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background: $pale-orange-yellow;
-    color: $white;
-  }
 }
 
 .remove {

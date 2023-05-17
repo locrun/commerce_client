@@ -50,6 +50,9 @@ button {
   border: none;
   cursor: pointer;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 a {

@@ -9,7 +9,7 @@ import { HomePage } from "./pages/HomePage";
 import { useLazyCheckUserQuery } from "./redux/api/authApi";
 import { useGetOneQuery } from "./redux/api";
 import { selectAuth } from "./redux/slices/authSlice";
-import { setQuantityItemsCart } from "./redux/slices/cartSlice";
+import { setQuantityItemsCart } from "./redux/slices/basketSlice";
 
 import { privateRoutes, publicRoutes, authRoutes } from "./routes";
 import { path } from "./utils/constants";

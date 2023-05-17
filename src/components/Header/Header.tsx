@@ -18,7 +18,7 @@ export const Header: FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch()
 
-  const { quantity } = useAppSelector(state => state.cart)
+  const { quantity } = useAppSelector(state => state.basket)
   const { pathname } = useLocation()
   const isAuth = useAppSelector(selectAuth)
 

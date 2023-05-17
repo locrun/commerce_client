@@ -19,9 +19,8 @@ export const BasketItems: FC = () => {
 
   const [fetchBasket, { data }] = useLazyGetOneQuery();
 
-
   useEffect(() => {
-    fetchBasket(false)
+    fetchBasket(true)
   }, [fetchBasket])
 
   return (

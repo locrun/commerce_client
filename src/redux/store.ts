@@ -14,7 +14,7 @@ import storage from "redux-persist/lib/storage";
 import authReducer from "./slices/authSlice";
 import pageReducer from "./slices/pageSlice";
 import typeReducer from "./slices/typeSlice";
-import cartReducer from "./slices/cartSlice";
+import basketReducer from "./slices/basketSlice";
 import { productApi, typeApi, authApi, basketApi } from "./api";
 
 const persistConfig = {
@@ -26,7 +26,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   page: pageReducer,
   type: typeReducer,
-  cart: cartReducer,
+  basket: basketReducer,
   [authApi.reducerPath]: authApi.reducer,
   [productApi.reducerPath]: productApi.reducer,
   [typeApi.reducerPath]: typeApi.reducer,

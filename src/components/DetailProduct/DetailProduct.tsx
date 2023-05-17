@@ -1,14 +1,19 @@
 import { FC } from "react";
-import { useParams } from "react-router-dom";
-import { IProductDetail, useGetOneProductQuery, useAppendMutation } from "../../redux/api";
-
+import { useNavigate, useParams } from "react-router-dom";
+import { IProductDetail, useGetOneProductQuery, useAppendMutation, useGetOneQuery }
+  from "../../redux/api";
 import s from "./DetailProduct.module.scss"
 
 export const DetailProduct: FC = () => {
+  const navigate = useNavigate()
   const { id } = useParams()
 
   const { data } = useGetOneProductQuery<IProductDetail>(id)
   const [append] = useAppendMutation()
+
+  const { data: items } = useGetOneQuery(true);
+
+  const isItemInCart = items?.products.some((item: { id: number; }) => item.id === Number(id))
 
 
   const AddProductToBasket = async () => {
@@ -43,9 +48,16 @@ export const DetailProduct: FC = () => {
                 )
               })}
             </ul>
-            <button className={s.button} onClick={() => AddProductToBasket()}>
-              Добавить в корзину
-            </button>
+            {
+              isItemInCart ?
+                <button className={s.goToBasket} onClick={() => navigate("/basket")}>
+                  Перейти в корзину
+                </button>
+                :
+                <button className={s.addToBasket} onClick={() => AddProductToBasket()}>
+                  Добавить в корзину
+                </button>
+            }
           </div>
         </>
       }

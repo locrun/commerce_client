@@ -62,7 +62,7 @@ export const Header: FC = () => {
                 <div className={s.icon} onClick={() => navigate("/basket")}>
                   <ShoppingCartOutlinedIcon color="primary" fontSize="large" />
                   <span>Корзина</span>
-                  <span>{quantity > 0 && quantity}</span>
+                  {quantity > 0 && <span className={s.quantity}>{quantity}</span>}
                 </div>
 
                 <div className={s.icon} onClick={handleLogout}>

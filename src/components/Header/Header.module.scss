@@ -88,6 +88,7 @@ a.logo:hover span {
   flex-direction: column;
   font-family: "Montserrat", sans-serif;
   cursor: pointer;
+  position: relative;
   &:last-child {
     margin-right: 0;
   }
@@ -97,4 +98,19 @@ a.logo:hover span {
       fill: #014b9b;
     }
   }
+}
+
+.quantity {
+  position: absolute;
+  right: 30px;
+  top: -3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  background-color: yellowgreen;
+  border-radius: 50%;
+  font-size: 14px;
+  color: #fff;
 }

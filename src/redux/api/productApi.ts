@@ -19,6 +19,7 @@ export interface IProduct {
 
 export interface IProductDetail {
   data: {
+    [x: string]: any;
     id: number;
     name: string;
     price: string;

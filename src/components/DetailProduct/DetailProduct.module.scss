@@ -30,7 +30,7 @@
     object-fit: cover;
   }
 }
-.button {
+.addToBasket {
   display: inline-block;
   padding: 8px 12px;
   width: 100%;
@@ -48,11 +48,37 @@
   font-weight: 700;
   font-size: 14px;
   text-transform: uppercase;
+
+  &:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+    transition: 0.3s ease-in;
+  }
 }
 
-.button:hover {
-  background-color: #0069d9;
-  border-color: #0062cc;
+.goToBasket {
+  display: inline-block;
+  padding: 8px 12px;
+  width: 100%;
+  border: none;
+  line-height: 1.5;
+  border-radius: 5px;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  cursor: pointer;
+  color: #fff;
+  font-family: "Segoe UI";
+  letter-spacing: 0.5px;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  background-color: #10c44c;
+  transition: 0.3s ease-in;
+
+  &:hover {
+    background-color: #099437;
+    transition: 0.3s ease-in;
+  }
 }
 
 .list {

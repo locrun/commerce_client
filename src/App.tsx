@@ -1,23 +1,25 @@
 import { FC, useEffect } from "react";
 import { BrowserRouter, Route, Routes, Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+
 import { useAppDispatch, useAppSelector } from "./hooks/redux-hooks";
 import { Header } from "./components";
 import { HomePage } from "./pages/HomePage";
-import { privateRoutes, publicRoutes, authRoutes } from "./routes";
-import { useLazyCheckUserQuery } from "./redux/api/authApi";
-import { selectAuth } from "./redux/slices/authSlice";
 
-import { path } from "./utils/constants";
-import { useLazyGetOneQuery } from "./redux/api";
+import { useLazyCheckUserQuery } from "./redux/api/authApi";
+import { useGetOneQuery } from "./redux/api";
+import { selectAuth } from "./redux/slices/authSlice";
 import { setQuantityItemsCart } from "./redux/slices/cartSlice";
+
+import { privateRoutes, publicRoutes, authRoutes } from "./routes";
+import { path } from "./utils/constants";
 
 export const App: FC = () => {
   const dispatch = useAppDispatch()
   const isAuth = useAppSelector(selectAuth)
 
   const [fetchCheckUser] = useLazyCheckUserQuery()
-  const [fetchBasket, { data }] = useLazyGetOneQuery()
+  const { data } = useGetOneQuery(true)
 
   useEffect(() => {
     async function fetchData() {
@@ -30,10 +32,6 @@ export const App: FC = () => {
     }
     fetchData();
   }, [fetchCheckUser])
-
-  useEffect(() => {
-    fetchBasket(true)
-  }, [fetchBasket])
 
   useEffect(() => {
     dispatch(setQuantityItemsCart(data?.products?.length))

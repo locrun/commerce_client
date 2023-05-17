@@ -29,7 +29,7 @@ export const HeaderAdmin: FC = () => {
         <div className={s.icon} onClick={() => navigate("/basket")}>
           <ShoppingCartOutlinedIcon color="primary" fontSize="large" />
           <span>Корзина</span>
-          <span>{quantity > 0 && quantity}</span>
+          <span className={s.quantity}>{quantity > 0 && quantity}</span>
         </div>
         <div className={s.icon} onClick={handleLogout} >
           <LogoutIcon color="primary" fontSize="large" />

@@ -1,41 +1,41 @@
 @import "../../styles/variables/variables.scss";
 
-.grid {
+.container {
   width: 100%;
-  margin-bottom: 25px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 545px);
-  justify-content: center;
-  row-gap: 25px;
-  column-gap: 25px;
-  position: relative;
-}
-
-.card {
-  padding: 17px 22px 17px 22px;
   display: flex;
-  align-items: center;
-  flex-direction: column;
   justify-content: space-between;
-  background: $white;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-  border-radius: 16px;
-  word-wrap: break-word;
-  @media (min-width: 400px) {
-    align-items: stretch;
-  }
 }
 .flex {
   width: 100%;
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+}
+.flexCol {
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  position: relative;
+  flex-grow: 2;
+  margin-left: 25px;
+  margin-right: 100px;
+}
+.card {
+  max-width: 600px;
+  min-width: 600px;
+  padding: 17px 22px 17px 22px;
+  margin-bottom: 20px;
+  background: $white;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  word-wrap: break-word;
 
-  @media (min-width: 440px) {
-    flex-direction: row;
+  &:last-child {
+    margin-bottom: 0;
   }
+}
+.title {
+  margin-top: 0;
 }
 
 .image {
@@ -46,12 +46,6 @@
 }
 
 .group {
-  flex-grow: 2;
-  margin-left: 0;
-
-  @media (min-width: 440px) {
-    margin-left: 25px;
-  }
   .title {
     margin-bottom: 15px;
     font-weight: 500;
@@ -65,29 +59,21 @@
     font-size: 15px;
     line-height: 18px;
     color: $white-aluminum;
-    text-align: center;
-    margin-bottom: 15px;
-    @media (min-width: 440px) {
-      text-align: left;
-      margin-bottom: 0;
-    }
   }
 }
 
 .bottomPrice {
-  margin-top: 15px;
+  display: flex;
+  align-items: flex-end;
   font-weight: 600;
   font-size: 15px;
   line-height: 18px;
   text-align: right;
   color: $black-blue;
-  @media (min-width: 440px) {
-    margin-top: 0;
-  }
 }
 
 .buttons {
-  min-width: 135px;
+  min-width: 100px;
   margin-top: 15px;
   display: flex;
   align-items: center;

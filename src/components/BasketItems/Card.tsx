@@ -6,8 +6,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 import s from "./BasketItems.module.scss";
 
-
-interface ICard {
+export interface ICard {
   product: {
     basket_product: {
       quantity: number,
@@ -21,40 +20,41 @@ interface ICard {
   }
 }
 
-export const Card: FC<ICard> = ({ product }) => {
+export const Card: FC<ICard> = ({ product: { basket_product, id, name, price, image } }) => {
 
-  const [fetchRemoveProduct] = useRemoveMutation();
   const [fetchDecrement] = useDecrementMutation()
   const [fetchIncrement] = useIncrementMutation()
-
+  const [fetchRemoveProduct] = useRemoveMutation()
 
   return (
     <div className={s.card}>
       <div className={s.flex}>
         <div className={s.image}>
-          <img src={process.env.REACT_APP_IMAGE_URL + product.image} alt="product" />
+          <img src={process.env.REACT_APP_IMAGE_URL + image} alt="product" />
         </div>
-        <div className={s.group}>
-          <h4 className={s.title}>{product.name}</h4>
-          <div className={s.price}>{product.price} &#8381;</div>
-        </div>
-        <button className={s.remove} onClick={() => fetchRemoveProduct(product.id)}>
-          <DeleteForeverIcon color="primary" fontSize="large" />
-        </button>
-      </div>
-      <div className={s.flex}>
-        <div className={s.buttons}>
-          <button onClick={() => fetchDecrement(product.id)}>
-            <IndeterminateCheckBoxIcon color="primary" fontSize="large" />
+        <div className={s.flexCol}>
+          <div className={s.group}>
+            <h4 className={s.title}>{name}</h4>
+            <div className={s.price}>{price} &#8381;</div>
+          </div>
+          <div className={s.flex}>
+            <div className={s.buttons}>
+              <button onClick={() => fetchDecrement(id)}>
+                <IndeterminateCheckBoxIcon color="primary" fontSize="medium" />
+              </button>
+              {basket_product.quantity}
+              <button onClick={() => fetchIncrement(id)}>
+                <AddBoxIcon
+                  color="primary" fontSize="medium" />
+              </button>
+            </div>
+          </div>
+          <button className={s.remove} onClick={() => fetchRemoveProduct(id)}>
+            <DeleteForeverIcon color="primary" fontSize="medium" />
           </button>
-          {product.basket_product?.quantity}
-          <button>
-            <AddBoxIcon onClick={() => fetchIncrement(product.id)}
-              color="primary" fontSize="large" />
-          </button>
         </div>
-        <div className={s.bottomPrice}>{product.price} &#8381;</div>
+        <div className={s.bottomPrice}>{price} &#8381;</div>
       </div>
-    </div>
+    </div >
   )
 };

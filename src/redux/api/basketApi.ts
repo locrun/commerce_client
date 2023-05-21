@@ -32,11 +32,6 @@ export const basketApi = createApi({
       invalidatesTags: ["basket"],
     }),
 
-    getOne: builder.query<any, any>({
-      query: () => "/basket/getone",
-      providesTags: ["basket"],
-    }),
-
     increment: builder.mutation({
       query: (productId: number) => ({
         url: `basket/product/${productId}/increment/1`,
@@ -64,6 +59,11 @@ export const basketApi = createApi({
         Secure: true,
       }),
       invalidatesTags: ["basket"],
+    }),
+
+    getOne: builder.query<any, any>({
+      query: () => "/basket/getone",
+      providesTags: ["basket"],
     }),
   }),
 });

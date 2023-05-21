@@ -15,7 +15,8 @@ type PropsCard = {
 }
 export const Card: FC<PropsCard> = ({ products: { id, name, price, rating, image } }) => {
 
-  const { data: basketItems } = useGetOneQuery(true);
+  const { data: basketItems } = useGetOneQuery(true)
+
   const [append] = useAppendMutation()
   const [fetchDecrement] = useDecrementMutation()
   const [fetchIncrement] = useIncrementMutation()
@@ -25,7 +26,6 @@ export const Card: FC<PropsCard> = ({ products: { id, name, price, rating, image
 
   const AddProductToBasket = async () => {
     await append(id)
-    console.log('Товар добавлен в корзину')
   }
 
   return (
@@ -52,19 +52,18 @@ export const Card: FC<PropsCard> = ({ products: { id, name, price, rating, image
             :
             <div className={s.buttons}>
               <button onClick={() => fetchDecrement(id)}>
-                <IndeterminateCheckBoxIcon color="primary" fontSize="large" />
+                <IndeterminateCheckBoxIcon
+                  color="primary" fontSize="medium" />
               </button>
               {basketItems?.products.map((item: IProduct) => {
-                let isItemInCart = item.id === id
                 return (
-                  isItemInCart ?
-                    <span key={item.id}>{item.basket_product.quantity}</span>
-                    : ''
+                  item.id === id &&
+                  <span key={item.name}>{item.basket_product.quantity}</span>
                 )
               })}
-              <button>
-                <AddBoxIcon onClick={() => fetchIncrement(id)}
-                  color="primary" fontSize="large" />
+              <button onClick={() => fetchIncrement(id)}>
+                <AddBoxIcon
+                  color="primary" fontSize="medium" />
               </button>
             </div>
           }

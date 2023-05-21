@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
@@ -20,7 +20,9 @@ export const HeaderAdmin: FC = () => {
   }
   return (
     <>
-      <h2 className={s.title}>Админ панель</h2>
+      <Link to="/">
+        <h2 className={s.title}>Админ панель</h2>
+      </Link>
       <div className={s.flex}>
         <div className={s.icon} onClick={() => navigate("/")} >
           <HomeOutlinedIcon color="primary" fontSize="large" />

@@ -17,8 +17,11 @@ body {
   --blue: #316bf3;
 }
 .main {
-  display: flex;
+  min-height: 500px;
   margin-top: 45px;
+  display: flex;
+  align-items: flex-start;
+  position: relative;
 }
 
 .container {
@@ -57,4 +60,8 @@ button {
 
 a {
   text-decoration: none;
+}
+
+h1 {
+  margin: 0;
 }

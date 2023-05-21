@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface Type {
-  typeId: number | null;
+  typeId: number;
 }
 
 const initialState: Type = {
-  typeId: null,
+  typeId: 1,
 };
 
 export const typeSlice = createSlice({

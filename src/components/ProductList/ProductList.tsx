@@ -12,8 +12,6 @@ export const ProductList: FC = () => {
   const { limit, currentPage } = useAppSelector((state) => state.page)
   const { typeId } = useAppSelector(state => state.type)
 
-
-
   const [fetchFilterGoods, { product, count }] = useLazyGetAllProductsQuery(
     {
       selectFromResult: ({ data }: any) => ({
@@ -44,8 +42,8 @@ export const ProductList: FC = () => {
   return (
     <section>
       <div className={s.container}>
-        {product?.map((goods: IProduct) => {
-          return <Card key={goods.id} products={goods} />
+        {product?.map((item: IProduct) => {
+          return <Card key={item.id} products={item} />
         })}
       </div >
       <>

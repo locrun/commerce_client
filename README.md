@@ -1,4 +1,4 @@
-## Fullstack приложение
+## Fullstack приложение (ТехноStore)
 
 ### Frontend
 * React, Redux, RTK-query, TypeScript, scss-modules

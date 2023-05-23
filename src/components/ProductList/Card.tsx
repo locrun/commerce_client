@@ -22,7 +22,7 @@ export const Card: FC<PropsCard> = ({ products: { id, name, price, rating, image
   const [fetchIncrement] = useIncrementMutation()
 
   const isItemInCart = basketItems?.products
-    .some((item: { id: number }) => item.id === id)
+    ?.some((item: { id: number }) => item.id === id)
 
   const AddProductToBasket = async () => {
     await append(id)

@@ -1,5 +1,4 @@
-# техноStore 
-### fullstack приложение
+## fullstack приложение
 ### Frontend
 * React, 
 * Redux, 

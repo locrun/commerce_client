@@ -1,7 +1,7 @@
 ## Fullstack приложение (ТехноStore)
 
 ### Frontend
-* React, Redux, RTK-query, TypeScript, scss-modules
+* React, Redux, RTK-query, TypeScript, scss-modules, Material-UI.
 
 ### Backend
 * Node js, Express, Sequelize, PostgreSQL

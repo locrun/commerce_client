@@ -39,6 +39,7 @@ export const ProductList: FC = () => {
     dispatch(setCurrentPage(value))
   };
 
+
   return (
     <section>
       <div className={s.container}>
